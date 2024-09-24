@@ -1,0 +1,660 @@
+.jumbotron,
+.card-body,
+.container,
+.site-header {
+  font-family: 'Verdana', serif !important;
+}
+
+.jumbotron .display-4 {
+  font-weight: bold;
+}
+
+.products-container {
+  display: flex; 
+  align-items: flex-start; 
+  margin-top: 10px;
+  padding: 10px;
+  justify-content: flex-end;
+}
+
+
+.filter-controls {
+  display: flex; 
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  width: 50%; 
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  gap: 20px; 
+  margin-bottom: 20px; 
+}
+ .productSearch { 
+  text-align: center;
+
+ }
+
+input[type="number"] {
+  width: calc(50% - 12px);
+  padding: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+#filterBtn {
+  padding: 5px 15px;
+  background-color: #f09100;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+#searchBtn {
+  padding: 5px 15px;
+  background-color:  #f09100;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+#limpiarBtn {
+  padding: 5px 15px;
+  background-color:  #f09100;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+#limpiarBtn:hover {
+  background-color: #ffa500;
+  color: black;
+}
+#filterBtn:hover {
+  background-color: #ffa500;
+  color: black;
+}
+
+#sortOptions {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  width: 100%;
+}
+
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 320px) {
+  p {
+    font-size: 12px; /* Ajusta el tamaño de fuente para dispositivos móviles */
+    white-space: normal; /* Permite que el texto se ajuste automáticamente */
+  }
+}
+
+/* Estilos para pantallas medianas (tablets) */
+@media (min-width: 768px) {
+  p {
+    font-size: 14px; /* Ajusta el tamaño de fuente para tabletas */
+    white-space: normal; /* Permite que el texto se ajuste automáticamente */
+  }
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.jumbotron {
+  height: 50vh;
+  padding: 5em inherit;
+  margin-bottom: 0;
+  background-color: #53C0FB;
+  background: url('../img/cover_back.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.jumbotron .lead {
+  font-size: 38px;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.site-header a {
+  color: white;
+  transition: ease-in-out color .15s;
+}
+
+.site-header .dropdown-menu a {
+  color: black;
+}
+
+.dropzone {
+  border: 2px dashed #0087F7;
+  border-radius: 5px;
+  background: white;
+}
+
+.img-fit {
+  max-height: 100%;
+}
+
+.alert {
+  position: fixed;
+  top: 80px;
+  width: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  top: 50%;
+  left: 50%;
+}
+
+.cursor-active {
+  cursor: pointer;
+}
+
+.left {
+  float: left;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+#spinner-wrapper {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1021;
+  display: none;
+}
+
+main {
+  min-height: calc(100vh - 210px);
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.checked {
+  color: orange;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 18rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.card-body {
+  padding: 20px;
+  padding-bottom: 40px; 
+  flex: 1; 
+}
+
+
+.card-footer {
+  padding: 10px 20px;
+  background-color: #f8f9fa; 
+  text-align: left;
+  border-top: none; /*Eliminar la línea de separación*/
+}
+
+
+.card-title {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1em;
+  margin-bottom: 15px;
+  color: #6c757d;
+}
+
+.card-price {
+  font-size: 1.2em;
+  color: #050505;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.card-sold-count {
+  font-size: 0.8em; /* Tamaño de fuente más pequeño */
+  color: #6c757d; 
+  margin-top: 0; /* Quita el margen superior para que esté pegado al borde del footer */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color:rgba(240, 145, 0);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: orange;
+}
+
+.banner {
+  width: 100%; /* Ancho completo de la página */
+  background-color: #f0f0f0; /* Fondo gris claro */
+  padding: 20px 0; /* Espacio vertical alrededor del texto */
+  border-bottom: 2px solid #ddd; /* Borde inferior sutil */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para darle profundidad */
+  text-align: center; /* Centrar el texto dentro del banner */
+  margin-bottom: 20px; /* Espacio debajo del banner */
+  
+}
+
+.banner h1 {
+  font-size: 60px; /* Tamaño grande para el título */
+  font-family: 'Roboto', sans-serif; /* Fuente moderna */
+  font-weight: bold; /* Negrita para mayor impacto */
+  color: #333; /* Color del texto */
+  margin: 0; /* Eliminar márgenes por defecto del h1 */
+}
+
+/* Adaptar el banner para pantallas móviles */
+@media (max-width: 320px) {
+  .banner {
+    padding: 10px 0; /* Reducir el espacio vertical alrededor del texto */
+    margin-bottom: 10px; /* Reducir el espacio debajo del banner */
+  }
+
+  .banner h1 {
+    font-size: 36px; /* Reducir el tamaño del texto en pantallas pequeñas */
+  }
+}
+
+/* Adaptar el banner para tablet */
+@media (max-width: 768px) {
+  .banner {
+    padding: 10px 0; /* Reducir el espacio vertical alrededor del texto */
+    margin-bottom: 10px; /* Reducir el espacio debajo del banner */
+  }
+
+  .banner h1 {
+    font-size: 36px; /* Reducir el tamaño del texto en pantallas pequeñas */
+  }
+}
+
+.main-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Estilos para centrar el contenido menos la categoría y nombre del producto */
+.content-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente el contenido */
+  text-align: center; /* Opcional: centra el texto dentro de los elementos */
+}
+
+.main-image {
+  margin-bottom: 20px; /* Espacio abajo de la imagen principal */
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.thumbnails img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.thumbnails img:hover {
+  border-color: #333;
+}
+
+#thumbnails {
+  display: flex;
+  overflow-x: auto; /* Permite desplazamiento horizontal si hay muchas miniaturas */
+  white-space: nowrap; /* Mantiene las miniaturas en una sola línea */
+  padding: 10px 0; /* Espacio arriba y abajo del carrusel */
+}
+
+.thumbnail {
+  width: 150px; /* Ajusta el tamaño de las miniaturas según tu diseño */
+  height: auto; /* Mantiene la relación de aspecto */
+  margin-right: 10px; /* Espacio entre las miniaturas */
+  cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+}
+
+.thumbnail:last-child {
+  margin-right: 0; /* Elimina el margen derecho de la última miniatura */
+}
+/* Estilos para centrar el contenido menos la categoría y nombre del producto */
+.content-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente el contenido */
+  text-align: center; /* Opcional: centra el texto dentro de los elementos */
+}
+
+.main-image {
+  margin-bottom: 20px; /* Espacio abajo de la imagen principal */
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.thumbnails img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.thumbnails img:hover {
+  border-color: #333;
+}
+
+#thumbnails {
+  display: flex;
+  overflow-x: auto; /* Permite desplazamiento horizontal si hay muchas miniaturas */
+  white-space: nowrap; /* Mantiene las miniaturas en una sola línea */
+  padding: 10px 0; /* Espacio arriba y abajo del carrusel */
+}
+
+.thumbnail {
+  width: 150px; /* Ajusta el tamaño de las miniaturas según tu diseño */
+  height: auto; /* Mantiene la relación de aspecto */
+  margin-right: 10px; /* Espacio entre las miniaturas */
+  cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+}
+
+.thumbnail:last-child {
+  margin-right: 0; /* Elimina el margen derecho de la última miniatura */
+}
+/* Estilos para centrar el contenido menos la categoría y nombre del producto */
+.content-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente el contenido */
+  text-align: center; /* Opcional: centra el texto dentro de los elementos */
+}
+
+.main-image {
+  margin-bottom: 20px; /* Espacio abajo de la imagen principal */
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.thumbnails img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.thumbnails img:hover {
+  border-color: #333;
+}
+
+#thumbnails {
+  display: flex;
+  overflow-x: auto; /* Permite desplazamiento horizontal si hay muchas miniaturas */
+  white-space: nowrap; /* Mantiene las miniaturas en una sola línea */
+  padding: 10px 0; /* Espacio arriba y abajo del carrusel */
+}
+
+.thumbnail {
+  width: 150px; /* Ajusta el tamaño de las miniaturas según tu diseño */
+  height: auto; /* Mantiene la relación de aspecto */
+  margin-right: 10px; /* Espacio entre las miniaturas */
+  cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+}
+
+.thumbnail:last-child {
+  margin-right: 0; /* Elimina el margen derecho de la última miniatura */
+}
+
+.gris {
+  color: grey;
+}
+
+/*Estilo responsive del filtrado y ordenado */
+/* Estilo general para pantallas de 320px */
+@media (max-width: 320px) {
+  .products-container {
+    padding: 10px;
+  }
+  
+  .filter-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .filter-controls > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  .price-filter input,
+  .price-filter button,
+  .sort-controls select,
+  .sort-controls input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Estilo para pantallas de 768px */
+@media (max-width: 768px) {
+  .products-container {
+    padding: 20px;
+  }
+  
+  .filter-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .filter-controls > div {
+    width: 100%;
+    max-width: 600px; /* Ajusta el ancho máximo según sea necesario */
+  }
+
+  .price-filter input,
+  .price-filter button,
+  .sort-controls select,
+  .sort-controls input {
+    width: auto;
+    margin: 5px 0; /* Ajusta el espacio entre los campos */
+  }
+  
+  .price-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .price-filter .filter-group {
+    display: flex;
+    flex-direction: column; /* Coloca la etiqueta y el campo en una columna */
+    flex: 0 1 calc(50% - 10px); /* Cada grupo ocupa el 50% del contenedor */
+  }
+  
+  .price-filter label {
+    text-align: left;
+  }
+  
+  .price-filter input {
+    width: 100%; /* Asegura que el input ocupe todo el ancho disponible dentro de su grupo */
+  }
+  
+  
+
+  .sort-controls {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+
+
+/*Estilo responsive para product-info*/
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px; /* Añade un poco de espacio a los lados */
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección de las columnas a vertical */
+  }
+
+  .col-md-3, .col-md-6 {
+    width: 100%; /* Asegura que cada columna ocupe todo el ancho disponible */
+    margin-bottom: 20px; /* Añade espacio entre las secciones */
+  }
+
+  .product-info {
+    text-align: center; /* Centra el texto en la columna de categoría y nombre */
+  }
+
+  .main-image {
+    text-align: center; /* Centra la imagen principal */
+  }
+
+  .product-description {
+    text-align: center; /* Centra la descripción del producto */
+  }
+}
