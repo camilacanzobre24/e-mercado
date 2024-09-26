@@ -46,7 +46,7 @@ fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
               // Crear un contenedor para el producto relacionado
               // Crear un contenedor para el producto relacionado
               let productDiv = document.createElement('div');
-              productDiv.classList.add('producto-relacionado', 'mb-3', 'text-center'); // Agregar clases para estilos
+              productDiv.classList.add('producto-relacionado', 'mb-3', 'text-center');
               // Crear el enlace del producto relacionado
               let productLink = document.createElement('a');
               productLink.onclick = function() {
