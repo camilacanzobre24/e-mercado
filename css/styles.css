@@ -658,3 +658,52 @@ a.custom-card:hover {
     text-align: center; /* Centra la descripción del producto */
   }
 }
+
+
+.fecha_calificaciones{
+  color: #888; /* Tono gris */
+  padding-left: 100px; /* Separación entre usuario y fecha */
+}
+
+.fa-star {
+  font-size: 17px;
+  cursor: pointer;
+  color: #ccc; /* Color gris para estrellas no seleccionadas */
+}
+
+.fa-star.checked {
+  color: #FFD700; /* Color dorado para estrellas llenas */
+}
+
+.empty-star {
+  color: transparent; /* Color transparente para el interior de la estrella */
+  border: none; /* Elimina el borde */
+  -webkit-text-stroke: 1px #888; /* Trazo negro alrededor de la estrella */
+  display: inline-block;
+}
+
+button {
+  background-color: #808080; /* Color gris */
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-left: 85px;
+  margin-bottom: 100px;
+}
+
+button:hover {
+  background-color: #a9a9a9; /* Gris más claro al hacer hover */
+}
+
+#productos-relacionados {
+  display: flex;               /* Utiliza flexbox para alinear los elementos en una fila */
+  flex-wrap: wrap;            /* Permite que los elementos se envuelvan si no hay suficiente espacio */
+  gap: 20px;                   /* Espacio entre los productos */
+  justify-content: center;     /* Centra los productos horizontalmente */
+}
+
