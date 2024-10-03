@@ -87,27 +87,6 @@ input[type="number"] {
 }
 
 
-/* Estilos para pantallas pequeñas (móviles) */
-@media (max-width: 320px) {
-  p {
-    font-size: 12px; /* Ajusta el tamaño de fuente para dispositivos móviles */
-    white-space: normal; /* Permite que el texto se ajuste automáticamente */
-  }
-}
-
-/* Estilos para pantallas medianas (tablets) */
-@media (min-width: 768px) {
-  p {
-    font-size: 14px; /* Ajusta el tamaño de fuente para tabletas */
-    white-space: normal; /* Permite que el texto se ajuste automáticamente */
-  }
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
 
 .jumbotron {
   height: 50vh;
@@ -122,12 +101,7 @@ input[type="number"] {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
+
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -155,6 +129,7 @@ footer {
 
 footer p {
   margin-bottom: .25rem;
+  font-size: clamp(12px, 2vw, 16px); /* Ajuste dinámico del tamaño de fuente */
 }
 
 .site-header a {
@@ -365,29 +340,7 @@ a.custom-card:hover {
   margin: 0; /* Eliminar márgenes por defecto del h1 */
 }
 
-/* Adaptar el banner para pantallas móviles */
-@media (max-width: 320px) {
-  .banner {
-    padding: 10px 0; /* Reducir el espacio vertical alrededor del texto */
-    margin-bottom: 10px; /* Reducir el espacio debajo del banner */
-  }
 
-  .banner h1 {
-    font-size: 36px; /* Reducir el tamaño del texto en pantallas pequeñas */
-  }
-}
-
-/* Adaptar el banner para tablet */
-@media (max-width: 768px) {
-  .banner {
-    padding: 10px 0; /* Reducir el espacio vertical alrededor del texto */
-    margin-bottom: 10px; /* Reducir el espacio debajo del banner */
-  }
-
-  .banner h1 {
-    font-size: 36px; /* Reducir el tamaño del texto en pantallas pequeñas */
-  }
-}
 
 .main-image img {
   width: 100%;
@@ -546,18 +499,67 @@ a.custom-card:hover {
   color: grey;
 }
 
-/*Estilo responsive del filtrado y ordenado */
-/* Estilo general para pantallas de 320px */
+
+
+
+.fecha_calificaciones{
+  color: #888; /* Tono gris */
+  padding-left: 100px; /* Separación entre usuario y fecha */
+}
+
+.fa-star {
+  font-size: 17px;
+  cursor: pointer;
+  color: #ccc; /* Color gris para estrellas no seleccionadas */
+}
+
+.fa-star.checked {
+  color: #FFD700; /* Color dorado para estrellas llenas */
+}
+
+.empty-star {
+  color: transparent; /* Color transparente para el interior de la estrella */
+  border: none; /* Elimina el borde */
+  -webkit-text-stroke: 1px #888; /* Trazo negro alrededor de la estrella */
+  display: inline-block;
+}
+
+#enviarComentario {
+  background-color: #808080; /* Color gris */
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-left: 85px;
+  margin-bottom: 100px;
+}
+
+#enviarComentario:hover {
+  background-color: #a9a9a9; /* Gris más claro al hacer hover */
+}
+
+#productos-relacionados {
+  display: flex;               /* Utiliza flexbox para alinear los elementos en una fila */
+  flex-wrap: wrap;            /* Permite que los elementos se envuelvan si no hay suficiente espacio */
+  gap: 20px;                   /* Espacio entre los productos */
+  justify-content: center;     /* Centra los productos horizontalmente */
+}
+
+
+/*----------------------------------------------*/
+
+/* Estilos para pantallas pequeñas (móviles) */
 @media (max-width: 320px) {
+  p {
+    font-size: 12px; /* Ajusta el tamaño de fuente para dispositivos móviles */
+    white-space: normal; /* Permite que el texto se ajuste automáticamente */
+  }
   .products-container {
     padding: 10px;
-  }
-  
-  .filter-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
   }
 
   .filter-controls > div {
@@ -572,10 +574,40 @@ a.custom-card:hover {
     width: 100%;
     box-sizing: border-box;
   }
+
+  .container {
+    flex-direction: row; /* Fila para pantallas medianas o mayores */
+    justify-content: space-between; /* Espaciado entre los elementos */
+    align-items: center; /* Alineación vertical centrada */
+  }
+
+  footer p {
+    white-space: nowrap; /* Evita el quiebre de líneas en pantallas medianas o mayores */
+  }
+
 }
 
-/* Estilo para pantallas de 768px */
+/* Estilos para pantallas medianas (tablets) */
 @media (max-width: 768px) {
+  p {
+    font-size: 14px; /* Ajusta el tamaño de fuente para tabletas */
+    white-space: normal; /* Permite que el texto se ajuste automáticamente */
+  }
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .banner {
+    padding: 10px 0; /* Reducir el espacio vertical alrededor del texto */
+    margin-bottom: 10px; /* Reducir el espacio debajo del banner */
+  }
+
+  .banner h1 {
+    font-size: 36px; /* Reducir el tamaño del texto en pantallas pequeñas */
+  }
   .products-container {
     padding: 20px;
   }
@@ -620,20 +652,18 @@ a.custom-card:hover {
     width: 100%; /* Asegura que el input ocupe todo el ancho disponible dentro de su grupo */
   }
   
-  
-
   .sort-controls {
     text-align: left;
     width: 100%;
   }
-}
-
-
-
-/*Estilo responsive para product-info*/
-@media (max-width: 768px) {
+  
   .container {
-    padding: 0 15px; /* Añade un poco de espacio a los lados */
+    padding: 0 15px; 
+  }
+  
+  .caja-comentarios {
+    padding: 10px;
+    /* Espacio interno ajustado */
   }
 
   .row {
@@ -646,64 +676,9 @@ a.custom-card:hover {
     margin-bottom: 20px; /* Añade espacio entre las secciones */
   }
 
-  .product-info {
-    text-align: center; /* Centra el texto en la columna de categoría y nombre */
+  textarea {
+    width: 100%; /* Asegura que el textarea sea ancho completo */
   }
 
-  .main-image {
-    text-align: center; /* Centra la imagen principal */
-  }
-
-  .product-description {
-    text-align: center; /* Centra la descripción del producto */
-  }
-}
-
-
-.fecha_calificaciones{
-  color: #888; /* Tono gris */
-  padding-left: 100px; /* Separación entre usuario y fecha */
-}
-
-.fa-star {
-  font-size: 17px;
-  cursor: pointer;
-  color: #ccc; /* Color gris para estrellas no seleccionadas */
-}
-
-.fa-star.checked {
-  color: #FFD700; /* Color dorado para estrellas llenas */
-}
-
-.empty-star {
-  color: transparent; /* Color transparente para el interior de la estrella */
-  border: none; /* Elimina el borde */
-  -webkit-text-stroke: 1px #888; /* Trazo negro alrededor de la estrella */
-  display: inline-block;
-}
-
-button {
-  background-color: #808080; /* Color gris */
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  margin-left: 85px;
-  margin-bottom: 100px;
-}
-
-button:hover {
-  background-color: #a9a9a9; /* Gris más claro al hacer hover */
-}
-
-#productos-relacionados {
-  display: flex;               /* Utiliza flexbox para alinear los elementos en una fila */
-  flex-wrap: wrap;            /* Permite que los elementos se envuelvan si no hay suficiente espacio */
-  gap: 20px;                   /* Espacio entre los productos */
-  justify-content: center;     /* Centra los productos horizontalmente */
 }
 

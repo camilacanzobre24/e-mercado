@@ -44,7 +44,6 @@ fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
             // Iterar sobre los productos relacionados
             productData.relatedProducts.forEach(relatedProduct => {
               // Crear un contenedor para el producto relacionado
-              // Crear un contenedor para el producto relacionado
               let productDiv = document.createElement('div');
               productDiv.classList.add('producto-relacionado', 'mb-3', 'text-center');
               // Crear el enlace del producto relacionado
@@ -207,8 +206,3 @@ function mostrarEstrellas(calificacion) {
   return estrellasHTML;
 }
 
-//funcion para redirigir al producto relacionado que seleccione
-function seleccionarProducto(productId) {
-  localStorage.setItem('productID', productId);
-  window.location.href = 'product-info.html'; // Redirige a la página product-info.html
-}
