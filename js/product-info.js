@@ -188,21 +188,5 @@ document.getElementById('enviarComentario').addEventListener('click', function()
   calificacionSeleccionada = 0; // Reiniciar la calificación seleccionada
 });
 
-// Función para generar las estrellas según la calificación seleccionada
-function mostrarEstrellas(calificacion) {
-  const maxStars = 5;
-  let estrellasHTML = '';
-  
-  // Agregar estrellas llenas
-  for (let i = 0; i < calificacion; i++) {
-    estrellasHTML += '<span class="fa fa-star checked"></span>'; 
-  }
-  
-  // Agregar estrellas vacías
-  for (let i = calificacion; i < maxStars; i++) {
-    estrellasHTML += '<span class="fa fa-star"></span>'; 
-  }
-  
-  return estrellasHTML;
-}
+
 
