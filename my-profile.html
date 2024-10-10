@@ -47,8 +47,16 @@
           <li class="nav-item">
           </li>
         </ul>
-        <span class="navbar-text ms-auto" id="nombre-usuario">
-        </span>
+        <!--usuario desplegable-->
+        <div class="dropdown ms-auto">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre-usuario" data-bs-toggle="dropdown" aria-expanded="false">
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nombre-usuario">
+            <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="#" id="cerrar-sesion">Cerrar sesión</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
