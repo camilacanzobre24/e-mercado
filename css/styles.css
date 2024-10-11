@@ -681,4 +681,39 @@ a.custom-card:hover {
   }
 
 }
-
+.profile-image {
+  width: 100%;
+  height: 150px; /* Altura de la imagen de perfil */
+  background-color: #D3D3D3; /* Color de fondo de la imagen de perfil */
+  margin-bottom: 20px;
+}
+.form-control-custom {
+  max-width: 300px; /* Ancho máximo de los campos de entrada */
+  margin: 0 auto; /* Centrado horizontal */
+}
+.bg-diamond {
+  background: radial-gradient(circle at 50% 50%, #FFA930, #FFE9C5); /* Degradé en diamante */
+  padding: 15px; /* Espacio alrededor del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  margin-bottom: 20px; /* Espacio debajo del título */
+  margin-top: 10px;
+}
+.title {
+  font-size: 3rem; /* Tamaño de la fuente del título */
+  color: #333333; /* Color del texto */
+  font-weight: bold; /* Negrita */
+  text-align: center; /* Centrar texto */
+  
+}
+.label-custom {
+  color: #ff9900; /* Cambia este color según tus preferencias */
+  font-weight: bold; /* Negrita (opcional) */
+  font-family: 'Anonymous Pro', monospace;
+  
+}
+.form-control {
+  border-radius: 5px; /* Bordes redondeados para los inputs */
+  width: 350px; /* Ancho más amplio de los campos de entrada */
+  height: 40px;
+  
+}

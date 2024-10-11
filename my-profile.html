@@ -23,6 +23,9 @@
         font-size: 3.5rem;
       }
     }
+    body {
+      background: linear-gradient(to bottom, #F4C985 0%, #FFE9C5 50%); 
+    }
   </style>
 </head>
 
@@ -62,11 +65,49 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="bg-diamond">
+        <h1 class="title">Mi perfil</h1>
+    </div>
+      <div class="row">
+          <div class="col-md-6">
+            <div class="profile-image mb-4 " style="width: 300px; height: 300px"></div>
+              <button type="submit" class="btn btn-primary btn-sm">Guardar cambios</button>
+          </div>
+          <div class="col-md-6">
+              <form class="text-right"> <!-- Alineado a la derecha -->
+                  <ul class="list-unstyled">
+                      <li class="mb-3">
+                          <label for="nombre" class="label-custom">Nombre*</label>
+                          <input type="text" class="form-control form-control-sm" id="nombre" required>
+                      </li>
+                      <li class="mb-3">
+                          <label for="segundo-nombre" class="label-custom">Segundo nombre</label>
+                          <input type="text" class="form-control form-control-sm" id="segundo-nombre">
+                      </li>
+                      <li class="mb-3">
+                          <label for="apellido" class="label-custom">Apellido*</label>
+                          <input type="text" class="form-control form-control-sm" id="apellido" required>
+                      </li>
+                      <li class="mb-3">
+                          <label for="segundo-apellido" class="label-custom">Segundo apellido</label>
+                          <input type="text" class="form-control form-control-sm" id="segundo-apellido">
+                      </li>
+                      <li class="mb-3">
+                          <label for="email" class="label-custom">E-mail*</label>
+                          <input type="email" class="form-control form-control-sm" id="email" required>
+                      </li>
+                      <li class="mb-3">
+                          <label for="telefono" class="label-custom">Teléfono de contacto</label>
+                          <input type="tel" class="form-control form-control-sm" id="telefono">
+                      </li>
+                  </ul>
+              </form>
+          </div>
       </div>
     </div>
   </main>
+  
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
