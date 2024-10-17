@@ -23,13 +23,14 @@
         font-size: 3.5rem;
       }
     }
+
     body {
-      background: linear-gradient(to bottom, #F4C985 0%, #FFE9C5 50%); 
+      background: linear-gradient(to bottom, #F4C985 0%, #FFE9C5 50%);
     }
   </style>
 </head>
 
-<body>
+<body data-bs-theme="light">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -67,53 +68,63 @@
     <div class="container">
       <div class="bg-diamond">
         <h1 class="title">Mi perfil</h1>
-    </div>
+      </div>
       <div class="row">
-          <div class="col-md-6">
-            <div class="profile-image mb-4 " style="width: 300px; height: 300px"></div>
-              <button type="submit" class="btn btn-primary btn-sm">Guardar cambios</button>
+        <div class="col-md-6 d-flex flex-column align-items-center">
+          <div class="profile-image" style="width: 300px; height: 300px; border: 1px solid #ccc; cursor: pointer;">
+            <!-- Aquí se mostrará la imagen de perfil -->
+        </div>
+          <div class="form-check form-switch d-flex align-items-center custom-switch">
+            <button onclick="cambiarTema()" class="btn rounded-fill">
+              <i id="dl-icon" class="bi bi-moon-fill"></i>
+          </button>
           </div>
-          <div class="col-md-6">
-              <form class="text-right"> <!-- Alineado a la derecha -->
-                  <ul class="list-unstyled">
-                      <li class="mb-3">
-                          <label for="nombre" class="label-custom">Nombre*</label>
-                          <input type="text" class="form-control form-control-sm" id="nombre" required>
-                      </li>
-                      <li class="mb-3">
-                          <label for="segundo-nombre" class="label-custom">Segundo nombre</label>
-                          <input type="text" class="form-control form-control-sm" id="segundo-nombre">
-                      </li>
-                      <li class="mb-3">
-                          <label for="apellido" class="label-custom">Apellido*</label>
-                          <input type="text" class="form-control form-control-sm" id="apellido" required>
-                      </li>
-                      <li class="mb-3">
-                          <label for="segundo-apellido" class="label-custom">Segundo apellido</label>
-                          <input type="text" class="form-control form-control-sm" id="segundo-apellido">
-                      </li>
-                      <li class="mb-3">
-                          <label for="email" class="label-custom">E-mail*</label>
-                          <input type="email" class="form-control form-control-sm" id="email" required>
-                      </li>
-                      <li class="mb-3">
-                          <label for="telefono" class="label-custom">Teléfono de contacto</label>
-                          <input type="tel" class="form-control form-control-sm" id="telefono">
-                      </li>
-                  </ul>
-              </form>
-          </div>
+          
+
+        </div>
+        <div class="col-md-6">
+          <form class="text-right"> <!-- Alineado a la derecha -->
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <label for="nombre" class="label-custom">Nombre*</label>
+                <input type="text" class="form-control form-control-sm" id="nombre" required>
+              </li>
+              <li class="mb-3">
+                <label for="segundo-nombre" class="label-custom">Segundo nombre</label>
+                <input type="text" class="form-control form-control-sm" id="segundo-nombre">
+              </li>
+              <li class="mb-3">
+                <label for="apellido" class="label-custom">Apellido*</label>
+                <input type="text" class="form-control form-control-sm" id="apellido" required>
+              </li>
+              <li class="mb-3">
+                <label for="segundo-apellido" class="label-custom">Segundo apellido</label>
+                <input type="text" class="form-control form-control-sm" id="segundo-apellido">
+              </li>
+              <li class="mb-3">
+                <label for="email" class="label-custom">E-mail*</label>
+                <input type="email" class="form-control form-control-sm" id="email" required>
+              </li>
+              <li class="mb-3">
+                <label for="telefono" class="label-custom">Teléfono de contacto</label>
+                <input type="tel" class="form-control form-control-sm" id="telefono">
+              </li>
+            </ul>
+            <button type="submit" class="btn btn-primary btn-sm" id="guardar-cambios">Guardar cambios</button>
+          </form>
+        </div>
       </div>
     </div>
   </main>
-  
+
 
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
