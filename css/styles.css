@@ -743,6 +743,41 @@ body[data-bs-theme="dark"] {
   color: white;
 }
 
+/* Aumentar el tamaño del switch */
+.custom-switch .form-check-input {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 1.5rem;
+}
+
+/* Ajustar el tamaño del indicador dentro del switch */
+.custom-switch .form-check-input:checked {
+  background-color: #343a40; /* Fondo oscuro cuando está activado */
+}
+
+/* Cambiar el color del switch cuando no está activado */
+.custom-switch .form-check-input {
+  background-color: #f8f9fa; /* Fondo claro */
+}
+
+/* Cambiar el color del indicador del switch */
+.custom-switch .form-check-input::before {
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+/* Cambiar el color del switch cuando el tema es claro */
+body[data-bs-theme="light"] .form-check-input {
+  background-color: #ffffff; /* Switch blanco */
+}
+
+/* Cambiar el color del switch cuando el tema es oscuro */
+body[data-bs-theme="dark"] .form-check-input {
+  background-color: #6c757d; /* Switch más oscuro */
+}
+
+
+
 /* Asegúrate de agregar más estilos según sea necesario */
 
 

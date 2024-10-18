@@ -191,19 +191,25 @@ cerrarSesion.addEventListener('click', function () {
 });
 
 
-// Funciones para cambiar entre tema claro y oscuro
+// Función para aplicar el tema oscuro
 const temaOscuro = () => {
     document.querySelector("body").setAttribute("data-bs-theme", "dark");
-    document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
-    localStorage.setItem('tema', 'oscuro'); // Guardar en localStorage
+    document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill"); // Cambia a icono de sol
+    document.querySelector("#theme-switch").style.backgroundColor = "#6c757d"; // Switch oscuro
+    localStorage.setItem('tema', 'oscuro'); // Guarda el tema en localStorage
+    document.querySelector("#theme-switch").checked = true; // Marca el switch
 };
 
+// Función para aplicar el tema claro
 const temaClaro = () => {
     document.querySelector("body").setAttribute("data-bs-theme", "light");
-    document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
-    localStorage.setItem('tema', 'claro'); // Guardar en localStorage
+    document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill"); // Cambia a icono de luna
+    document.querySelector("#theme-switch").style.backgroundColor = "#ffffff"; // Switch claro
+    localStorage.setItem('tema', 'claro'); // Guarda el tema en localStorage
+    document.querySelector("#theme-switch").checked = false; // Desmarca el switch
 };
 
+// Función para cambiar el tema cuando el switch es clicado
 const cambiarTema = () => {
     const temaActual = document.querySelector("body").getAttribute("data-bs-theme");
 
@@ -214,13 +220,17 @@ const cambiarTema = () => {
     }
 };
 
-// Al cargar la página, verifica el tema guardado en localStorage
+// Cargar el tema guardado al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     const temaGuardado = localStorage.getItem("tema");
 
     if (temaGuardado === "oscuro") {
-        temaOscuro(); // Aplicar tema oscuro al cargar
+        temaOscuro();
     } else {
-        temaClaro(); // Aplicar tema claro al cargar
+        temaClaro();
     }
+
+    // Añadir evento al switch
+    document.querySelector("#theme-switch").addEventListener("change", cambiarTema);
 });
+
