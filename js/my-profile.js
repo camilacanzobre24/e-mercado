@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Obtener los elementos del formulario
+    // Obtener elementos del DOM
     const nombre = document.getElementById('nombre');
     const segundoNombre = document.getElementById('segundo-nombre');
     const apellido = document.getElementById('apellido');
@@ -16,6 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const telefono = document.getElementById('telefono');
     const email = document.getElementById('email');
     const guardarCambios = document.getElementById('guardar-cambios');
+    const cerrarSesion = document.getElementById('cerrar-sesion');
+    const profileImage = document.querySelector('.profile-image');
+    const toggleFotoInput = document.createElement('input'); // Input para cargar foto
+    toggleFotoInput.type = 'file';
+    toggleFotoInput.accept = 'image/*';
 
     // Cargar valores guardados en localStorage, si existen
     nombre.value = localStorage.getItem('nombre') || '';
@@ -25,10 +30,33 @@ document.addEventListener("DOMContentLoaded", function () {
     telefono.value = localStorage.getItem('telefono') || '';
     email.value = emailUsuario || '';
 
-    // Evento para validar y guardar los cambios
+    // Cargar foto de perfil desde localStorage, si existe
+    const storedImage = localStorage.getItem('profileImage');
+    if (storedImage) {
+        profileImage.style.backgroundImage = `url(${storedImage})`;
+        profileImage.style.backgroundSize = 'cover';
+        profileImage.style.backgroundPosition = 'center';
+    }
+
+    // Evento para cargar nueva foto de perfil
+    profileImage.addEventListener('click', () => toggleFotoInput.click());
+    toggleFotoInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const imageData = event.target.result;
+                localStorage.setItem('profileImage', imageData); // Guardar en localStorage
+                profileImage.style.backgroundImage = `url(${imageData})`;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Guardar cambios en los campos del formulario
     guardarCambios.addEventListener('click', function () {
-        limpiarMensajes(); // Limpia mensajes previos
-        let valido = true; // Controla si el formulario es válido
+        limpiarMensajes();
+        let valido = true;
 
         // Validación del campo "nombre"
         if (nombre.value.trim() === '') {
@@ -44,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('segundoNombre', segundoNombre.value.trim());
             mostrarCheck(segundoNombre);
         } else {
-            localStorage.removeItem('segundoNombre'); // Elimina si está vacío
+            localStorage.removeItem('segundoNombre');
         }
 
         // Validación del campo "apellido"
@@ -61,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('segundoApellido', segundoApellido.value.trim());
             mostrarCheck(segundoApellido);
         } else {
-            localStorage.removeItem('segundoApellido'); // Elimina si está vacío
+            localStorage.removeItem('segundoApellido');
         }
 
         // Guardar o eliminar "teléfono"
@@ -69,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('telefono', telefono.value.trim());
             mostrarCheck(telefono);
         } else {
-            localStorage.removeItem('telefono'); // Elimina si está vacío
+            localStorage.removeItem('telefono');
         }
 
         // Validación del campo "email"
@@ -81,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
             valido = false;
         } else {
             mostrarCheck(email);
-            localStorage.setItem('usuario', email.value.trim()); // Actualiza el email guardado
+            localStorage.setItem('usuario', email.value.trim());
         }
 
         if (valido) {
@@ -96,10 +124,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+   
+   // Cerrar sesión y limpiar datos de usuario
+cerrarSesion.addEventListener('click', function () {
+    // Eliminar datos de localStorage
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('segundoNombre');
+    localStorage.removeItem('apellido');
+    localStorage.removeItem('segundoApellido');
+    localStorage.removeItem('telefono');
+    localStorage.removeItem('profileImage');
+
+    // Limpiar los campos del formulario
+    nombre.value = '';
+    segundoNombre.value = '';
+    apellido.value = '';
+    segundoApellido.value = '';
+    telefono.value = '';
+    email.value = '';
+
+    // Limpiar la imagen de perfil
+    profileImage.style.backgroundImage = ''; // Restablecer la imagen de perfil
+
+    // Redirigir a la página de inicio de sesión
+    window.location.href = 'login.html';
+});
+
     // Función para mostrar mensajes de error
     function mostrarError(campo, mensaje) {
-        campo.classList.add('is-invalid'); // Marca el campo como inválido
-
+        campo.classList.add('is-invalid');
         let errorDiv = campo.parentNode.querySelector('.invalid-feedback');
         if (!errorDiv) {
             errorDiv = document.createElement('div');
@@ -109,16 +164,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Función para mostrar el ícono de verificación (tick verde)
+    // Función para mostrar el ícono de verificación
     function mostrarCheck(campo) {
-        campo.classList.remove('is-invalid'); // Quita la clase de error si existía
-        campo.classList.add('is-valid'); // Marca el campo como válido
-
+        campo.classList.remove('is-invalid');
+        campo.classList.add('is-valid');
         let checkDiv = campo.parentNode.querySelector('.valid-feedback');
         if (!checkDiv) {
             checkDiv = document.createElement('div');
             checkDiv.classList.add('valid-feedback');
-            checkDiv.innerHTML = '✔️'; // Icono de verificación
+            checkDiv.innerHTML = '✔️';
             campo.parentNode.appendChild(checkDiv);
         }
     }
@@ -126,38 +180,30 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para limpiar mensajes de error y ticks verdes
     function limpiarMensajes() {
         const campos = [nombre, segundoNombre, apellido, segundoApellido, telefono, email];
-
         campos.forEach(campo => {
-            campo.classList.remove('is-invalid', 'is-valid'); // Quita las clases de validación
-
+            campo.classList.remove('is-invalid', 'is-valid');
             const errorDiv = campo.parentNode.querySelector('.invalid-feedback');
             const checkDiv = campo.parentNode.querySelector('.valid-feedback');
-
-            if (errorDiv) errorDiv.remove(); // Elimina mensajes de error si existen
-            if (checkDiv) checkDiv.remove(); // Elimina ticks verdes si existen
+            if (errorDiv) errorDiv.remove();
+            if (checkDiv) checkDiv.remove();
         });
     }
 });
 
-// Función para aplicar el tema oscuro
+
+// Funciones para cambiar entre tema claro y oscuro
 const temaOscuro = () => {
     document.querySelector("body").setAttribute("data-bs-theme", "dark");
-    document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill"); // Cambia a icono de sol
-    document.querySelector("#theme-switch").style.backgroundColor = "#6c757d"; // Switch oscuro
-    localStorage.setItem('tema', 'oscuro'); // Guarda el tema en localStorage
-    document.querySelector("#theme-switch").checked = true; // Marca el switch
+    document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
+    localStorage.setItem('tema', 'oscuro'); // Guardar en localStorage
 };
 
-// Función para aplicar el tema claro
 const temaClaro = () => {
     document.querySelector("body").setAttribute("data-bs-theme", "light");
-    document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill"); // Cambia a icono de luna
-    document.querySelector("#theme-switch").style.backgroundColor = "#ffffff"; // Switch claro
-    localStorage.setItem('tema', 'claro'); // Guarda el tema en localStorage
-    document.querySelector("#theme-switch").checked = false; // Desmarca el switch
+    document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
+    localStorage.setItem('tema', 'claro'); // Guardar en localStorage
 };
 
-// Función para cambiar el tema cuando el switch es clicado
 const cambiarTema = () => {
     const temaActual = document.querySelector("body").getAttribute("data-bs-theme");
 
@@ -168,17 +214,13 @@ const cambiarTema = () => {
     }
 };
 
-// Cargar el tema guardado al cargar la página
+// Al cargar la página, verifica el tema guardado en localStorage
 document.addEventListener("DOMContentLoaded", () => {
     const temaGuardado = localStorage.getItem("tema");
 
     if (temaGuardado === "oscuro") {
-        temaOscuro();
+        temaOscuro(); // Aplicar tema oscuro al cargar
     } else {
-        temaClaro();
+        temaClaro(); // Aplicar tema claro al cargar
     }
-
-    // Añadir evento al switch
-    document.querySelector("#theme-switch").addEventListener("change", cambiarTema);
 });
-
