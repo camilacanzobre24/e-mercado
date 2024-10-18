@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Obtener elementos del DOM
+    // Obtener los elementos del formulario
     const nombre = document.getElementById('nombre');
     const segundoNombre = document.getElementById('segundo-nombre');
     const apellido = document.getElementById('apellido');
@@ -16,11 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const telefono = document.getElementById('telefono');
     const email = document.getElementById('email');
     const guardarCambios = document.getElementById('guardar-cambios');
-    const cerrarSesion = document.getElementById('cerrar-sesion');
-    const profileImage = document.querySelector('.profile-image');
-    const toggleFotoInput = document.createElement('input'); // Input para cargar foto
-    toggleFotoInput.type = 'file';
-    toggleFotoInput.accept = 'image/*';
 
     // Cargar valores guardados en localStorage, si existen
     nombre.value = localStorage.getItem('nombre') || '';
@@ -30,33 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
     telefono.value = localStorage.getItem('telefono') || '';
     email.value = emailUsuario || '';
 
-    // Cargar foto de perfil desde localStorage, si existe
-    const storedImage = localStorage.getItem('profileImage');
-    if (storedImage) {
-        profileImage.style.backgroundImage = `url(${storedImage})`;
-        profileImage.style.backgroundSize = 'cover';
-        profileImage.style.backgroundPosition = 'center';
-    }
-
-    // Evento para cargar nueva foto de perfil
-    profileImage.addEventListener('click', () => toggleFotoInput.click());
-    toggleFotoInput.addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                const imageData = event.target.result;
-                localStorage.setItem('profileImage', imageData); // Guardar en localStorage
-                profileImage.style.backgroundImage = `url(${imageData})`;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // Guardar cambios en los campos del formulario
+    // Evento para validar y guardar los cambios
     guardarCambios.addEventListener('click', function () {
-        limpiarMensajes();
-        let valido = true;
+        limpiarMensajes(); // Limpia mensajes previos
+        let valido = true; // Controla si el formulario es válido
 
         // Validación del campo "nombre"
         if (nombre.value.trim() === '') {
@@ -72,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('segundoNombre', segundoNombre.value.trim());
             mostrarCheck(segundoNombre);
         } else {
-            localStorage.removeItem('segundoNombre');
+            localStorage.removeItem('segundoNombre'); // Elimina si está vacío
         }
 
         // Validación del campo "apellido"
@@ -89,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('segundoApellido', segundoApellido.value.trim());
             mostrarCheck(segundoApellido);
         } else {
-            localStorage.removeItem('segundoApellido');
+            localStorage.removeItem('segundoApellido'); // Elimina si está vacío
         }
 
         // Guardar o eliminar "teléfono"
@@ -97,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('telefono', telefono.value.trim());
             mostrarCheck(telefono);
         } else {
-            localStorage.removeItem('telefono');
+            localStorage.removeItem('telefono'); // Elimina si está vacío
         }
 
         // Validación del campo "email"
@@ -109,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             valido = false;
         } else {
             mostrarCheck(email);
-            localStorage.setItem('usuario', email.value.trim());
+            localStorage.setItem('usuario', email.value.trim()); // Actualiza el email guardado
         }
 
         if (valido) {
@@ -124,37 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-   
-   // Cerrar sesión y limpiar datos de usuario
-cerrarSesion.addEventListener('click', function () {
-    // Eliminar datos de localStorage
-    localStorage.removeItem('usuario');
-    localStorage.removeItem('isAuthenticated');
-    localStorage.removeItem('nombre');
-    localStorage.removeItem('segundoNombre');
-    localStorage.removeItem('apellido');
-    localStorage.removeItem('segundoApellido');
-    localStorage.removeItem('telefono');
-    localStorage.removeItem('profileImage');
-
-    // Limpiar los campos del formulario
-    nombre.value = '';
-    segundoNombre.value = '';
-    apellido.value = '';
-    segundoApellido.value = '';
-    telefono.value = '';
-    email.value = '';
-
-    // Limpiar la imagen de perfil
-    profileImage.style.backgroundImage = ''; // Restablecer la imagen de perfil
-
-    // Redirigir a la página de inicio de sesión
-    window.location.href = 'login.html';
-});
-
     // Función para mostrar mensajes de error
     function mostrarError(campo, mensaje) {
-        campo.classList.add('is-invalid');
+        campo.classList.add('is-invalid'); // Marca el campo como inválido
+
         let errorDiv = campo.parentNode.querySelector('.invalid-feedback');
         if (!errorDiv) {
             errorDiv = document.createElement('div');
@@ -164,15 +109,16 @@ cerrarSesion.addEventListener('click', function () {
         }
     }
 
-    // Función para mostrar el ícono de verificación
+    // Función para mostrar el ícono de verificación (tick verde)
     function mostrarCheck(campo) {
-        campo.classList.remove('is-invalid');
-        campo.classList.add('is-valid');
+        campo.classList.remove('is-invalid'); // Quita la clase de error si existía
+        campo.classList.add('is-valid'); // Marca el campo como válido
+
         let checkDiv = campo.parentNode.querySelector('.valid-feedback');
         if (!checkDiv) {
             checkDiv = document.createElement('div');
             checkDiv.classList.add('valid-feedback');
-            checkDiv.innerHTML = '✔️';
+            checkDiv.innerHTML = '✔️'; // Icono de verificación
             campo.parentNode.appendChild(checkDiv);
         }
     }
@@ -180,16 +126,18 @@ cerrarSesion.addEventListener('click', function () {
     // Función para limpiar mensajes de error y ticks verdes
     function limpiarMensajes() {
         const campos = [nombre, segundoNombre, apellido, segundoApellido, telefono, email];
+
         campos.forEach(campo => {
-            campo.classList.remove('is-invalid', 'is-valid');
+            campo.classList.remove('is-invalid', 'is-valid'); // Quita las clases de validación
+
             const errorDiv = campo.parentNode.querySelector('.invalid-feedback');
             const checkDiv = campo.parentNode.querySelector('.valid-feedback');
-            if (errorDiv) errorDiv.remove();
-            if (checkDiv) checkDiv.remove();
+
+            if (errorDiv) errorDiv.remove(); // Elimina mensajes de error si existen
+            if (checkDiv) checkDiv.remove(); // Elimina ticks verdes si existen
         });
     }
 });
-
 
 // Función para aplicar el tema oscuro
 const temaOscuro = () => {

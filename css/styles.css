@@ -717,94 +717,36 @@ a.custom-card:hover {
   height: 40px;
   
 }
-
-
-/* Alinea el menú desplegable a la izquierda */
-.dropdown-menu {
-  left: 0;  /* Asegura que se alinee al borde izquierdo */
-  right: auto; /* Elimina la alineación a la derecha */
-}
-
-/* Alinea el menú desplegable a la izquierda */
-.dropdown-menu {
-  left: 0;  /* Asegura que se alinee al borde izquierdo */
-  right: auto; /* Elimina la alineación a la derecha */
-}
-
-/* Estilos para el tema claro */
-body[data-bs-theme="light"] {
-  background-color: white;
-  color: black;
-}
-
-/* Estilos para el tema oscuro */
-body[data-bs-theme="dark"] {
-  background-color: black;
-  color: white;
-}
-
 /* Aumentar el tamaño del switch */
 .custom-switch .form-check-input {
-  width: 3rem;
-  height: 1.5rem;
-  border-radius: 1.5rem;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 1.5rem;
 }
 
 /* Ajustar el tamaño del indicador dentro del switch */
 .custom-switch .form-check-input:checked {
-  background-color: #343a40; /* Fondo oscuro cuando está activado */
+    background-color: #343a40; /* Fondo oscuro cuando está activado */
 }
 
 /* Cambiar el color del switch cuando no está activado */
 .custom-switch .form-check-input {
-  background-color: #f8f9fa; /* Fondo claro */
+    background-color: #f8f9fa; /* Fondo claro */
 }
 
 /* Cambiar el color del indicador del switch */
 .custom-switch .form-check-input::before {
-  height: 1.3rem;
-  width: 1.3rem;
+    height: 1.3rem;
+    width: 1.3rem;
 }
 
 /* Cambiar el color del switch cuando el tema es claro */
 body[data-bs-theme="light"] .form-check-input {
-  background-color: #ffffff; /* Switch blanco */
+    background-color: #ffffff; /* Switch blanco */
 }
 
 /* Cambiar el color del switch cuando el tema es oscuro */
 body[data-bs-theme="dark"] .form-check-input {
-  background-color: #6c757d; /* Switch más oscuro */
+    background-color: #6c757d; /* Switch más oscuro */
 }
 
-
-
-/* Asegúrate de agregar más estilos según sea necesario */
-
-
-@media (max-width: 768px) {
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Asegura que el formulario ocupe todo el ancho del contenedor */
-  }
-
-  form ul {
-    width: 100%; /* Los inputs también ocuparán todo el ancho disponible */
-    max-width: 400px; /* Limita el ancho máximo para evitar que se estiren demasiado */
-  }
-
-  form button {
-    width: 100%;
-    max-width: 200px; /* Botón más pequeño y centrado */
-  }
-}
-
-
-/* Estilo para celulares */
-@media (max-width: 320px) {
-  input {
-    width: 90%; /* Reduce el ancho de los inputs */
-    max-width: 280px; /* Evita que se estiren demasiado */
-  }
-}
