@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const guardarCambios = document.getElementById('guardar-cambios');
     const cerrarSesion = document.getElementById('cerrar-sesion');
     const profileImage = document.querySelector('.profile-image');
-    const toggleFotoInput = document.createElement('input'); // Input para cargar foto
-    toggleFotoInput.type = 'file';
-    toggleFotoInput.accept = 'image/*';
+    const activarFoto = document.createElement('input'); // Input para cargar foto
+    activarFoto.type = 'file';
+    activarFoto.accept = 'image/*';
 
     // Cargar valores guardados en localStorage, si existen
     nombre.value = localStorage.getItem('nombre') || '';
@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Evento para cargar nueva foto de perfil
-    profileImage.addEventListener('click', () => toggleFotoInput.click());
-    toggleFotoInput.addEventListener('change', function (e) {
+    profileImage.addEventListener('click', () => activarFoto.click());
+    activarFoto.addEventListener('change', function (e) {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
