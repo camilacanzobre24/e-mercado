@@ -32,6 +32,11 @@ fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
         // Obtener el productID del localStorage
         let productID = localStorage.getItem('productID');
         if (productID) {
+            // Función para seleccionar un producto, guardar su id en el localStorage y redirigir a comprar
+            document.getElementById('comprar').addEventListener('click', function () {
+                localStorage.setItem('productID', productID);
+                window.location.href = 'cart.html'; // Redirige a la página cart.html
+            });
             // Solicitar la información del producto usando el productID
             fetch(`https://japceibal.github.io/emercado-api/products/${productID}.json`)
                 .then(response => response.json())
