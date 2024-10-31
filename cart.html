@@ -49,7 +49,46 @@
       <div class="banner">
         <h1>Carrito de compras</h1>
       </div>
-     </div>
+      <div class="container">
+        <!-- Línea superior -->
+        <div class="header-line"></div>
+        
+        <!-- Encabezados -->
+        <div class="row text-center">
+          <div class="col-3">Imagen</div>
+          <div class="col-2">Nombre</div>
+          <div class="col-1">Moneda</div>
+          <div class="col-2">Precio</div>
+          <div class="col-1">Cantidad</div>
+          <div class="col-2">Subtotal</div>
+          <div class="col-1">Eliminar</div>
+        </div>
+
+        <!-- Línea inferior -->
+        <div class="footer-line"></div>
+
+        <!-- Fila de productos -->
+        <div class="row justify-content-center">
+          <div class="col-3">
+            <img id="imagen-principal" src="" alt="Imagen del producto principal" class="img-fluid" />
+          </div>
+          <div class="col-2">
+            <p class="text-center" id="nombre-producto"></p>
+          </div>
+          <div class="col-1">
+            <p  class="text-center" id="moneda"></p>
+          </div>
+          <div class="col-2">
+            <p  class="text-center" id="precio"></p>
+          </div>
+          <div class="col-1">
+            <input type="text" id="cantidad" class="form-control" />
+          </div>
+          <div class="col-2"><!-- Subtotal dinámico --></div>
+          <div class="col-1"><!-- Botón de eliminar --></div>
+        </div>
+      </div>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container text-center text-md-start">
