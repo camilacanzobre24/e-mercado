@@ -233,3 +233,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Añadir evento al switch
     document.querySelector("#theme-switch").addEventListener("change", cambiarTema);
 });
+
+// Función para actualizar el badge del carrito
+function actualizarBadgeCarrito() {
+    const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    let totalCantidad = 0;
+
+    // Suma las cantidades de los productos
+    productosEnCarrito.forEach(productID => {
+        const cantidadGuardada = localStorage.getItem(`cantidad-${productID}`) || 1; 
+        totalCantidad += parseInt(cantidadGuardada) || 0;
+    });
+
+    // Actualiza el badge con el total de cantidades
+    document.getElementById('carrito-badge').textContent = totalCantidad;
+}
+
+// Llama a la función al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    actualizarBadgeCarrito(); // Actualiza el badge al cargar la página
+});

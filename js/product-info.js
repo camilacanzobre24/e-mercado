@@ -5,6 +5,7 @@ if (usuario) {
     window.location.href = 'login.html';
 }
 
+
 document.getElementById('cerrar-sesion').addEventListener('click', function() {
     // Borra todos los datos relevantes del localStorage
     localStorage.removeItem('usuario');
@@ -28,13 +29,19 @@ fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
     .then(response => response.json())
     .then(data => {
         const catName = data.catName; // Obtener el nombre de la categoría
-
+            
+        
         // Obtener el productID del localStorage
         let productID = localStorage.getItem('productID');
         if (productID) {
             // Función para seleccionar un producto, guardar su id en el localStorage y redirigir a comprar
             document.getElementById('comprar').addEventListener('click', function () {
-                localStorage.setItem('productID', productID);
+                // Recupera el array de productIDs desde el localStorage, o inicializa un array vacío si no existe
+                let productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+                // Agrega el nuevo productID al array
+                productosEnCarrito.push(productID);
+                // Guarda el array actualizado en el localStorage
+                localStorage.setItem('productosEnCarrito', JSON.stringify(productosEnCarrito));
                 window.location.href = 'cart.html'; // Redirige a la página cart.html
             });
             // Solicitar la información del producto usando el productID
@@ -231,4 +238,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     console.log("Tema aplicado:", document.querySelector("body").getAttribute("data-bs-theme"));
+});
+
+// Función para actualizar el badge del carrito
+function actualizarBadgeCarrito() {
+    const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    let totalCantidad = 0;
+
+    // Suma las cantidades de los productos
+    productosEnCarrito.forEach(productID => {
+        const cantidadGuardada = localStorage.getItem(`cantidad-${productID}`) || 1; 
+        totalCantidad += parseInt(cantidadGuardada) || 0;
+    });
+
+    // Actualiza el badge con el total de cantidades
+    document.getElementById('carrito-badge').textContent = totalCantidad;
+}
+
+// Llama a la función al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    actualizarBadgeCarrito(); // Actualiza el badge al cargar la página
 });
