@@ -816,3 +816,45 @@ card[data-bs-theme="dark"]  {
   border-top: 2px solid #ddd;
   margin-top: 10px;
 }
+
+/*-------------------------------------------------*/
+
+/* Ajustes generales */
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.header-line, .footer-line {
+  height: 2px;
+  background-color: #ddd;
+  margin: 15px 0;
+}
+
+/* Diseño de tarjeta para pantallas medianas y pequeñas */
+@media (max-width: 768px) {
+  .row.product-item {
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .row.product-item > div {
+    margin-bottom: 10px;
+  }
+
+  .header-line, .footer-line {
+    display: none; /* Oculta las líneas superior e inferior */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Ajustes adicionales para pantallas móviles */
+  .row.product-item img {
+    max-width: 80%;
+    height: auto;
+  }
+}
+

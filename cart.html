@@ -49,47 +49,58 @@
       <div class="banner">
         <h1>Carrito de compras</h1>
       </div>
-      <div class="container">
-        <!-- Línea superior -->
-        <div class="header-line"></div>
-        
-        <!-- Encabezados -->
-        <div class="row text-center">
-          <div class="col-3">Imagen</div>
-          <div class="col-2">Nombre</div>
-          <div class="col-1">Moneda</div>
-          <div class="col-2">Precio</div>
-          <div class="col-1">Cantidad</div>
-          <div class="col-2">Subtotal</div>
-          <div class="col-1">Eliminar</div>
+      
+      <!-- Línea superior -->
+      <div class="header-line"></div>
+  
+      <!-- Encabezados solo para pantallas grandes -->
+      <div class="row text-center d-none d-lg-flex">
+        <div class="col-3">Imagen</div>
+        <div class="col-2">Nombre</div>
+        <div class="col-1">Moneda</div>
+        <div class="col-2">Precio</div>
+        <div class="col-1">Cantidad</div>
+        <div class="col-2">Subtotal</div>
+        <div class="col-1">Eliminar</div>
+      </div>
+  
+      <!-- Línea inferior -->
+      <div class="footer-line d-none d-lg-block"></div>
+  
+      <!-- Fila de productos -->
+      <div class="row product-item justify-content-center align-items-center">
+        <div class="col-3 d-flex align-items-center justify-content-center">
+          <img id="imagen-principal" src="URL_DE_IMAGEN" alt="Imagen del producto principal" class="img-fluid" />
         </div>
-
-        <!-- Línea inferior -->
-        <div class="footer-line"></div>
-
-        <!-- Fila de productos -->
-        <div class="row justify-content-center">
-          <div class="col-3">
-            <img id="imagen-principal" src="" alt="Imagen del producto principal" class="img-fluid" />
-          </div>
-          <div class="col-2">
-            <p class="text-center" id="nombre-producto"></p>
-          </div>
-          <div class="col-1">
-            <p  class="text-center" id="moneda"></p>
-          </div>
-          <div class="col-2">
-            <p  class="text-center" id="precio"></p>
-          </div>
-          <div class="col-1">
-            <input type="text" id="cantidad" class="form-control" />
-          </div>
-          <div class="col-2"><!-- Subtotal dinámico --></div>
-          <div class="col-1"><!-- Botón de eliminar --></div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          <p id="nombre-producto">Armario</p>
+        </div>
+        <div class="col-1 d-flex align-items-center justify-content-center">
+          <p id="moneda">UYU</p>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          <p id="precio">8000</p>
+        </div>
+        <div class="col-1 d-flex align-items-center justify-content-center">
+          <input type="text" id="cantidad" class="form-control" value="1" />
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          <p id="subtotal">8000</p>
+        </div>
+        <div class="col-1 d-flex align-items-center justify-content-center">
+          <button class="btn btn-danger btn-sm">Eliminar</button>
         </div>
       </div>
     </div>
+  
+    <!-- Mensaje de carrito vacío -->
+    <div class="container">
+      <div id="mensaje-carrito-vacio" class="alert alert-info text-center" style="display: none;">
+        No hay productos en el carrito.
+      </div>
+    </div>
   </main>
+  
   <footer class="text-muted">
     <div class="container text-center text-md-start">
       <div class="row">
