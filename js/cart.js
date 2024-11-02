@@ -20,16 +20,11 @@ function agregarProductoAlCarrito(productID) {
     
     // Verificar si el producto ya existe en el carrito
     if (!productosEnCarrito.includes(productID)) {
-        // Si no existe, agrega el nuevo productID al array
         productosEnCarrito.push(productID);
-        // Guarda el array actualizado en el localStorage
         localStorage.setItem('productosEnCarrito', JSON.stringify(productosEnCarrito));
-        
-        // Establecer la cantidad predeterminada como 1
         localStorage.setItem(`cantidad-${productID}`, 1);
     }
 
-    // Actualiza el badge del carrito
     actualizarBadgeCarrito();
 }
 
@@ -38,35 +33,34 @@ function actualizarBadgeCarrito() {
     const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
     let totalCantidad = 0;
 
-    // Suma las cantidades de los productos
     productosEnCarrito.forEach(productID => {
-        const cantidadGuardada = localStorage.getItem(`cantidad-${productID}`) || 1; // Cambiado a 1 como predeterminado
+        const cantidadGuardada = localStorage.getItem(`cantidad-${productID}`) || 1;
         totalCantidad += parseInt(cantidadGuardada) || 0;
     });
 
-    // Actualiza el badge con el total de cantidades
     document.getElementById('carrito-badge').textContent = totalCantidad;
 }
 
 // Cargar los productos al abrir la página de carrito
 document.addEventListener("DOMContentLoaded", () => {
-    actualizarBadgeCarrito(); // Actualiza el badge al cargar la página
+    actualizarBadgeCarrito();
 
     const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
     const carritoContainer = document.getElementById('carritoContainer');
+    let totalPesos = 0;
+    let totalDolares = 0;
 
     if (productosEnCarrito.length > 0) {
         productosEnCarrito.forEach(productID => {
             fetch(`https://japceibal.github.io/emercado-api/products/${productID}.json`)
                 .then(response => response.json())
                 .then(productData => {
-                    // Aquí verificamos si hay una cantidad guardada, de lo contrario, usamos 1
                     const cantidadGuardada = localStorage.getItem(`cantidad-${productID}`) || 1;
 
                     const productoHTML = `
                         <div id="producto-${productID}" class="row product-item justify-content-center align-items-center mb-3">
                             <div class="col-3 d-flex align-items-center justify-content-center">
-                                <img src="img/prod${productData.id}_1.jpg" alt="Imagen del producto" class="img-fluid" style="width: 200px; height: 150px;" />
+                                <img src="img/prod${productData.id}_1.jpg" alt="Imagen del producto" class="img-fluid img-carrito" style="width: 200px; height: 150px;" />
                             </div>
                             <div class="col-2 d-flex align-items-center justify-content-center">
                                 <p>${productData.name}</p>
@@ -89,56 +83,91 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     `;
                     carritoContainer.insertAdjacentHTML('beforeend', productoHTML);
+
+                    if (productData.currency === "UYU") {
+                        totalPesos += cantidadGuardada * productData.cost;
+                    } else if (productData.currency === "USD") {
+                        totalDolares += cantidadGuardada * productData.cost;
+                    }
+
+                    actualizarTotales(totalPesos, totalDolares);
                 })
                 .catch(error => console.error('Error al cargar la información del producto:', error));
         });
     } else {
         document.getElementById('mensaje-carrito-vacio').style.display = 'block';
+        actualizarTotales(0, 0); // Establece totales en cero si el carrito está vacío
     }
 
-    // Actualizar el subtotal y el badge cada vez que cambia la cantidad
     document.addEventListener('input', (event) => {
         if (event.target.classList.contains('cantidad')) {
             const cantidad = parseInt(event.target.value) || 0;
             const precio = parseFloat(event.target.getAttribute('data-precio'));
             const subtotal = cantidad * precio;
 
-            // Actualiza el subtotal correspondiente
             event.target.closest('.product-item').querySelector('.subtotal').textContent = subtotal.toFixed(2);
 
-            // Guarda la cantidad en localStorage
             const productID = event.target.closest('.product-item').id.split('-')[1];
-            localStorage.setItem(`cantidad-${productID}`, cantidad); // Guarda la cantidad ingresada
+            localStorage.setItem(`cantidad-${productID}`, cantidad);
 
-            // Actualiza el badge con la suma total de las cantidades
-            actualizarBadgeCarrito(); // Llama a la función para actualizar el badge
+            actualizarBadgeCarrito();
+            recalcularTotales();
         }
     });
 });
 
+// Función para recalcular los totales
+function recalcularTotales() {
+    const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    let totalPesos = 0;
+    let totalDolares = 0;
+
+    if (productosEnCarrito.length > 0) {
+        productosEnCarrito.forEach(productID => {
+            const cantidadGuardada = parseInt(localStorage.getItem(`cantidad-${productID}`)) || 1;
+            
+            fetch(`https://japceibal.github.io/emercado-api/products/${productID}.json`)
+                .then(response => response.json())
+                .then(productData => {
+                    if (productData.currency === "UYU") {
+                        totalPesos += cantidadGuardada * productData.cost;
+                    } else if (productData.currency === "USD") {
+                        totalDolares += cantidadGuardada * productData.cost;
+                    }
+
+                    actualizarTotales(totalPesos, totalDolares);
+                });
+        });
+    } else {
+        actualizarTotales(0, 0); // Establece totales en cero si el carrito está vacío
+    }
+}
+
+// Función para actualizar los totales en la interfaz
+function actualizarTotales(totalPesos, totalDolares) {
+    document.getElementById('total-pesos').textContent = totalPesos.toFixed(2);
+    document.getElementById('total-dolares').textContent = totalDolares.toFixed(2);
+}
+
 // Función para eliminar un producto del carrito
 function eliminarProducto(productID) {
     let productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
-    // Filtra el array para eliminar el producto seleccionado
     productosEnCarrito = productosEnCarrito.filter(id => id !== productID);
-    // Guarda el array actualizado en el localStorage
     localStorage.setItem('productosEnCarrito', JSON.stringify(productosEnCarrito));
 
-    // Elimina el producto del DOM
     const productoDiv = document.getElementById(`producto-${productID}`);
     if (productoDiv) {
         productoDiv.remove();
     }
 
-    // Borra la cantidad guardada en localStorage
     localStorage.removeItem(`cantidad-${productID}`);
 
     if (productosEnCarrito.length === 0) {
         document.getElementById('mensaje-carrito-vacio').style.display = 'block';
     }
 
-    // Actualizar el badge al eliminar un producto
     actualizarBadgeCarrito();
+    recalcularTotales();
 }
 
 // Función para aplicar el tema guardado
@@ -150,21 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("body").setAttribute("data-bs-theme", "light");
     }
 
-    // Actualizar el badge al cargar la página
     actualizarBadgeCarrito();
 });
 
-
-
-// Función para aplicar el tema guardado
-document.addEventListener("DOMContentLoaded", () => {
-    const temaGuardado = localStorage.getItem("tema");
-    if (temaGuardado === "oscuro") {
-        document.querySelector("body").setAttribute("data-bs-theme", "dark");
-    } else {
-        document.querySelector("body").setAttribute("data-bs-theme", "light");
-    }
-
-    // Actualizar el badge al cargar la página
-    actualizarBadgeCarrito();
-});

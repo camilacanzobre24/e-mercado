@@ -45,40 +45,50 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="banner">
-        <h1>Carrito de compras</h1>
-      </div>
-      
-      <!-- Línea superior -->
-      <div class="header-line"></div>
-  
-      <!-- Encabezados solo para pantallas grandes -->
-      <div class="row text-center d-none d-lg-flex">
-        <div class="col-3">Imagen</div>
-        <div class="col-2">Nombre</div>
-        <div class="col-1">Moneda</div>
-        <div class="col-2">Precio</div>
-        <div class="col-1">Cantidad</div>
-        <div class="col-2">Subtotal</div>
-        <div class="col-1">Eliminar</div>
-      </div>
-  
-      <!-- Línea inferior -->
-      <div class="footer-line d-none d-lg-block"></div>
-  
-      <!-- Fila de productos -->
-      <div class="row product-item justify-content-center align-items-center">
-            
-        <p id="mensaje-carrito-vacio" style="display: none;">El carrito está vacío.</p>
-
-        <!-- Contenedor para los productos en el carrito -->
-        <div id="carritoContainer" class="mt-3">
-            <!-- Los productos se insertarán aquí dinámicamente -->
+      <div class="container">
+        <div class="banner">
+          <h1>Carrito de compras</h1>
         </div>
-      </div>
-    </div>
-  
+        
+        <!-- Línea superior -->
+        <div class="header-line"></div>
+    
+        <!-- Encabezados solo para pantallas grandes -->
+        <div class="row text-center d-none d-lg-flex encabezado-gris">
+          <div class="col-3">Imagen</div>
+          <div class="col-2">Nombre</div>
+          <div class="col-1">Moneda</div>
+          <div class="col-2">Precio</div>
+          <div class="col-1">Cantidad</div>
+          <div class="col-2">Subtotal</div>
+          <div class="col-1">Eliminar</div>
+        </div>
+    
+        <!-- Línea inferior -->
+        <div class="footer-line d-none d-lg-block"></div>
+    
+        <!-- Fila de productos -->
+        <div class="row product-item justify-content-center align-items-center">
+          <p id="mensaje-carrito-vacio" style="display: none;">El carrito está vacío.</p>
+    
+          <!-- Contenedor para los productos en el carrito -->
+          <div id="carritoContainer" class="mt-3">
+              <!-- Los productos se insertarán aquí dinámicamente -->
+          </div>
+        </div>
+    
+        <!-- Totales alineados a la derecha -->
+          <!-- Línea superior -->
+        <div class="header-line"></div>
+    
+        <div class="text-end mt-3 pe-5">
+          <p>Total en Pesos: <span id="total-pesos">0.00</span> UYU</p>
+          <p>Total en Dólares: <span id="total-dolares">0.00</span> USD</p>
+        </div>
+        
+        <!-- Línea inferior -->
+        <div class="footer-line d-none d-lg-block"></div>
+      </div>  
   </main>
   
   <footer class="text-muted">
