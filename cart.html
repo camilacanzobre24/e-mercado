@@ -86,9 +86,124 @@
           <p>Total en Dólares: <span id="total-dolares">0.00</span> USD</p>
         </div>
         
+          <!-- Botón para abrir el primer modal -->
+        <div class="text-end">
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Iniciar Proceso de Compra</button>
+        </div>
+
+
         <!-- Línea inferior -->
         <div class="footer-line d-none d-lg-block"></div>
-      </div>  
+        
+       <!--MODAL-->
+        <!-- Modal Paso 1 -->
+  <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-labelledby="exampleModalToggleLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel">TIPO DE ENVÍO</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido del Paso 1 -->
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" valu="premium">
+            <label class="form-check-label" for="flexRadioDefault1">Premium 2 a 5 días (15%)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="express">
+            <label class="form-check-label" for="flexRadioDefault2">Express 5 a 8 días (7%)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="standard">
+            <label class="form-check-label" for="flexRadioDefault3">Standard 12 a 15 días (5%)</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Paso 2 -->
+  <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel2">DIRECCIÓN DE ENVÍO</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido del Paso 2 -->
+          <div class="mb-3"><label class="form-label">Departamento</label><input class="form-control" id="departamento"></div>
+          <div class="mb-3"><label class="form-label">Localidad</label><input class="form-control" id="localidad"></div>
+          <div class="mb-3"><label class="form-label">Calle</label><input class="form-control" id="calle"></div>
+          <div class="mb-3"><label class="form-label">Número</label><input class="form-control" id="número"></div>
+          <div class="mb-3"><label class="form-label">Esquina</label><input class="form-control" id="esquina"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Paso 3 -->
+  <div class="modal fade" id="exampleModalToggle3" tabindex="-1" aria-labelledby="exampleModalToggleLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel3">FORMA DE PAGO</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido del Paso 3 -->
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">Tarjeta de Crédito</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">Transferencia Bancaria</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Paso 4 (Costos) -->
+<div class="modal fade" id="exampleModalToggle4" tabindex="-1" aria-labelledby="exampleModalToggleLabel4" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel4">COSTOS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenido del Paso 4 -->   
+        <p>Subtotal en Pesos: <span id="subtotal-pesos2">0.00</span> UYU</p>
+        <p>Subtotal en Dólares: <span id="subtotal-dolares2">0.00</span> USD</p>
+        <p>Costo de envío en Pesos: <span id="costo-de-envio-pesos">0.00</span> UYU</p>
+        <p>Costo de envío en Dólares: <span id="costo-de-envio-dolares">0.00</span> USD</p>
+        <h4>Total en Pesos: <span id="total-pesos2">0.00</span></h4>
+        <h4>Total en Dólares: <span id="total-dolares2">0.00</span></h4>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" data-bs-dismiss="modal">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
   </main>
   
   <footer class="text-muted">

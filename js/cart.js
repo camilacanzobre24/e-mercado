@@ -147,6 +147,8 @@ function recalcularTotales() {
 function actualizarTotales(totalPesos, totalDolares) {
     document.getElementById('total-pesos').textContent = totalPesos.toFixed(2);
     document.getElementById('total-dolares').textContent = totalDolares.toFixed(2);
+    document.getElementById('subtotal-pesos2').textContent = totalPesos.toFixed(2);
+    document.getElementById('subtotal-dolares2').textContent = totalDolares.toFixed(2);
 }
 
 // Función para eliminar un producto del carrito
@@ -169,6 +171,88 @@ function eliminarProducto(productID) {
     actualizarBadgeCarrito();
     recalcularTotales();
 }
+
+//---------------------------------------------------------//
+document.addEventListener('DOMContentLoaded', () => {
+    // Encuentra todos los botones que cambian entre modales
+    const nextButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+  
+    nextButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        // Obtiene el modal actualmente activo
+        const currentModal = event.target.closest('.modal');
+  
+        // Cierra el modal activo antes de abrir el siguiente
+        if (currentModal) {
+          const modalInstance = bootstrap.Modal.getInstance(currentModal);
+          modalInstance.hide();
+        }
+      });
+    });
+  });
+
+
+// Función para calcular el costo de envío basado en el subtotal
+function calcularCostoEnvio() {
+    recalcularTotales();
+    const costoEnvioP = document.getElementById('costo-de-envio-pesos');
+    const costoEnvioD = document.getElementById('costo-de-envio-dolares');
+    const subtotalElementPesos = document.getElementById('subtotal-pesos2'); // El subtotal en pesos
+    const subtotalPesos = parseFloat(subtotalElementPesos.textContent) || 0; // Obtener el subtotal (en pesos)
+    const subtotalElementDolares = document.getElementById('subtotal-dolares2'); // El subtotal en pesos
+    const subtotalDolares = parseFloat(subtotalElementDolares.textContent) || 0; // Obtener el subtotal (en dolares)
+    const tipoEnvio = document.querySelector('input[name="flexRadioDefault"]:checked'); // Opción de envío seleccionada
+    const totalPesos = document.getElementById('total-pesos2');
+    const totalDolares = document.getElementById('total-dolares2');
+    let porcentaje = 0;
+  
+    // Si hay un tipo de envío seleccionado, obtener el porcentaje correspondiente
+    if (tipoEnvio) {
+      switch (tipoEnvio.value) {
+        case 'premium':
+          porcentaje = 0.15; // 15% de costo adicional
+          break;
+        case 'express':
+          porcentaje = 0.07; // 7% de costo adicional
+          break;
+        case 'standard':
+          porcentaje = 0.05; // 5% de costo adicional
+          break;
+      }
+    }
+  
+    // Calcular el costo de envío
+    const costoEnvioPesos = subtotalPesos * porcentaje;
+    const costoEnvioDolares = subtotalDolares * porcentaje;
+    const totalFinalPesos = costoEnvioPesos + subtotalPesos;
+    const totalFinalDolares = costoEnvioDolares + subtotalDolares;
+    // Actualizar el texto con el costo de envío calculado
+    costoEnvioP.textContent = `${costoEnvioPesos.toFixed(2)} `;
+    costoEnvioD.textContent = `${costoEnvioDolares.toFixed(2)} `;
+    totalPesos.textContent = `${totalFinalPesos.toFixed(2)}`;
+    totalDolares.textContent = `${totalFinalDolares.toFixed(2)}`;
+  }
+  
+  // Asignar el evento a los radio buttons para calcular el costo de envío cuando se cambie la opción
+  const radios = document.querySelectorAll('input[name="flexRadioDefault"]');
+  radios.forEach(radio => {
+    radio.addEventListener('change', calcularCostoEnvio);
+  });
+  
+  // Inicializar el costo de envío al cargar la página
+  window.addEventListener('DOMContentLoaded', calcularCostoEnvio);
+  
+
+
+
+
+
+
+
+
+
+
+
 
 // Función para aplicar el tema guardado
 document.addEventListener("DOMContentLoaded", () => {
