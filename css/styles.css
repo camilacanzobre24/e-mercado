@@ -782,19 +782,43 @@ body[data-bs-theme="dark"] {
   
 }
 
-
 /* Estilo para celulares */
 @media (max-width: 320px) {
   .img-carrito {
-    width: 40px; /* Ajusta el tamaño para dispositivos muy pequeños */
-    height: auto; /* Mantiene la proporción de la imagen */
+    width: 100px; /* Aumenta el ancho para que sea más visible */
+    max-width: 100%; /* Permite que se ajuste al contenedor */
+    height: auto; /* Mantiene la proporción */
+    min-width: 80px; /* Establece un tamaño mínimo para evitar que sea demasiado pequeña */
+    object-fit: contain;
+  }
+
+  .cantidad {
+    width: 60px;
+    max-width: 100%;
+    min-width: 50px;
+    padding: 4px;
+    font-size: 14px;
+  }
 }
 
-/* CSS para hacer que el campo de cantidad sea responsive */
-.cantidad {
-    width: 100%; /* Ocupa el 100% del contenedor */
-    max-width: 80px; /* Ancho máximo para mantener un tamaño razonable */
-}
+/* Estilo para tablets */
+@media (max-width: 768px) {
+
+  .img-carrito {
+    width: 100px; /* Aumenta el ancho para que sea más visible */
+    max-width: 100%; /* Permite que se ajuste al contenedor */
+    height: auto; /* Mantiene la proporción */
+    min-width: 80px; /* Establece un tamaño mínimo para evitar que sea demasiado pequeña */
+    object-fit: contain;
+  }
+
+  .cantidad {
+    width: 60px;
+    max-width: 100%;
+    min-width: 50px;
+    padding: 4px;
+    font-size: 14px;
+  }
 }
 
 
