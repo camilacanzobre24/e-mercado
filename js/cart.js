@@ -299,22 +299,25 @@ function showAlertError2(message) {
 // Función para ocultar la alerta de error en el Paso 2
 function hideAlertError2() {
     const alertDanger = document.getElementById("alert-danger-direccion-de-envio");
-    alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
-    alertDanger.style.display = 'none'; // Asegura que la alerta esté oculta
+    if (alertDanger) {
+        alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
+        alertDanger.style.display = 'none'; // Asegura que la alerta esté oculta
+    }
 }
-
 
 // Event listener para el botón de 'Siguiente' en el Paso 2
 document.getElementById('siguiente2').addEventListener('click', function (event) {
+    // Obtiene los valores de los campos
     let departamento = document.getElementById("departamento").value.trim();
     let localidad = document.getElementById("localidad").value.trim();
     let calle = document.getElementById("calle").value.trim();
-    let numero = document.getElementById("número").value.trim(); // Asegúrate de que el ID es "número"
-    let esquina = document.getElementById("esquina").value.trim(); // Asegúrate de que el ID es "esquina"
-    
+    let numero = document.getElementById("número").value.trim();
+    let esquina = document.getElementById("esquina").value.trim();
+
+    // Verifica si algún campo está vacío
     if (!departamento || !localidad || !calle || !numero || !esquina) {
-        // Si no hay campos completos, muestra la alerta y evita avanzar
-        event.preventDefault(); // Evita que avance al siguiente paso
+        // Si hay campos vacíos, muestra la alerta y evita avanzar
+        event.preventDefault(); // Evita que el modal avance
         showAlertError2("No pueden haber campos vacíos");
     } else {
         // Si todos los campos están completos, oculta la alerta
@@ -331,17 +334,31 @@ document.getElementById('siguiente2').addEventListener('click', function (event)
 });
 
 
+
 // Función para mostrar la alerta de error
 function showAlertError3(message) {
     const alertDanger = document.getElementById("alert-danger-totales");
-    alertDanger.querySelector('p').textContent = message; // Actualiza el mensaje de la alerta
-    alertDanger.classList.add("show"); // Muestra la alerta
+    if (alertDanger) { // Verificamos si alertDanger existe
+        const alertMessage = alertDanger.querySelector('p');
+        if (alertMessage) {
+            alertMessage.textContent = message; // Actualiza el mensaje de la alerta
+        }
+        alertDanger.classList.add("show"); // Muestra la alerta
+        alertDanger.style.display = 'block'; // Asegura que la alerta sea visible
+    } else {
+        console.error("No se encontró el elemento con el ID 'alert-danger-totales'");
+    }
 }
 
 // Función para ocultar la alerta de error
 function hideAlertError3() {
     const alertDanger = document.getElementById("alert-danger-totales");
-    alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
+    if (alertDanger) { // Verificamos si alertDanger existe
+        alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
+        alertDanger.style.display = 'none'; // Asegura que la alerta esté oculta
+    } else {
+        console.error("No se encontró el elemento con el ID 'alert-danger-totales'");
+    }
 }
 
 // Lógica para el evento de clic en el botón de "Iniciar Proceso de Compra"
@@ -352,14 +369,14 @@ document.getElementById('inicio-de-compra').addEventListener('click', function (
     const totalPesosValue = parseFloat(totalPesos.textContent);
     const totalDolaresValue = parseFloat(totalDolares.textContent);
 
-    // Si ambos totales son 0, evitar abrir el modal, mostrar la alerta y detener la acción
+    // Si ambos totales son 0, evita abrir el modal, muestra la alerta y detiene la acción
     if (totalPesosValue === 0 && totalDolaresValue === 0) {
-        event.preventDefault(); // Evita que avance al siguiente paso
+        event.preventDefault(); // Evita que el modal avance
         event.stopPropagation(); // Previene la propagación del evento de clic
         showAlertError3("Debe haber al menos un producto agregado al carrito");
 
         // Asegúrate de que el modal esté cerrado si se hizo clic con totales cero
-        const modalElement = document.getElementById('exampleModalToggle'); // Cambio aquí: usamos el ID correcto
+        const modalElement = document.getElementById('exampleModalToggle'); // Usamos el ID correcto
         if (modalElement) {
             var myModal = bootstrap.Modal.getInstance(modalElement);
             if (myModal) {
@@ -368,7 +385,7 @@ document.getElementById('inicio-de-compra').addEventListener('click', function (
         }
     } else {
         hideAlertError3(); // Oculta la alerta si los totales son válidos
-        const modalElement = document.getElementById('exampleModalToggle'); // Cambio aquí también
+        const modalElement = document.getElementById('exampleModalToggle'); // Usamos el ID correcto
 
         // Verifica si el modal existe y está listo para abrir
         if (modalElement) {
@@ -377,6 +394,7 @@ document.getElementById('inicio-de-compra').addEventListener('click', function (
         }
     }
 });
+
 
 // Función para mostrar la alerta de error
 function showAlertError4(message) {
@@ -402,19 +420,69 @@ document.getElementById('siguiente3').addEventListener('click', function (event)
         // Si no hay selección, muestra la alerta y evita avanzar
         event.preventDefault(); // Evita que avance al siguiente paso
         showAlertError4("Debe seleccionar una opción");
-    } else {
-        // Si hay selección, oculta la alerta
-        hideAlertError4();
+        return; // Sale de la función para no continuar con la validación
+    } 
+    
+    // Si la opción seleccionada es 'Tarjeta de Crédito', validamos los campos
+    const tarjetaCreditoRadio = document.getElementById("flexRadioDefault4");
+    if (tarjetaCreditoRadio.checked) {
+        const cardNumber = document.getElementById("card-number").value;
+        const cardHolder = document.getElementById("card-holder").value;
+        const cardExpiration = document.getElementById("card-expiration").value;
+        const cardCvv = document.getElementById("card-cvv").value;
 
-        // Cierra el modal actual (Paso 1)
-        const modal3 = bootstrap.Modal.getInstance(document.getElementById('exampleModalToggle3'));
-        modal3.hide(); // Cierra el modal
-
-        // Muestra el siguiente modal (Paso 2)
-        const modal4 = new bootstrap.Modal(document.getElementById('exampleModalToggle4'));
-        modal4.show(); // Muestra el siguiente modal
+        // Verifica que todos los campos estén completos
+        if (!cardNumber || !cardHolder || !cardExpiration || !cardCvv) {
+            event.preventDefault(); // Evita que avance al siguiente paso
+            showAlertError4("Debe completar todos los campos de la tarjeta.");
+            return; // Sale de la función para no continuar con la validación
+        }
     }
+
+    // Si todo está correcto, oculta la alerta y avanza
+    hideAlertError4();
+
+    // Cierra el modal actual (Paso 1)
+    const modal3 = bootstrap.Modal.getInstance(document.getElementById('exampleModalToggle3'));
+    modal3.hide(); // Cierra el modal
+
+    // Muestra el siguiente modal (Paso 2)
+    const modal4 = new bootstrap.Modal(document.getElementById('exampleModalToggle4'));
+    modal4.show(); // Muestra el siguiente modal
 });
+
+// Selecciona los elementos del DOM
+const tarjetaCreditoRadio = document.getElementById("flexRadioDefault4");
+const transferenciaBancariaRadio = document.getElementById("flexRadioDefault5");
+const creditCardForm = document.getElementById("credit-card-form");
+
+// Inicialmente, ocultamos el formulario de tarjeta de crédito si no está seleccionado "Tarjeta de Crédito"
+creditCardForm.style.display = "none"; // Aseguramos que el formulario esté oculto al cargar la página
+
+// Verificamos si ya hay alguna opción seleccionada y mostramos u ocultamos el formulario en consecuencia
+if (tarjetaCreditoRadio.checked) {
+    creditCardForm.style.display = "block"; // Muestra el formulario de tarjeta si "Tarjeta de Crédito" está seleccionado
+} else {
+    creditCardForm.style.display = "none"; // Aseguramos que el formulario esté oculto si no está seleccionado
+}
+
+// Event listener para mostrar el formulario cuando se selecciona "Tarjeta de Crédito"
+tarjetaCreditoRadio.addEventListener("change", function () {
+  if (tarjetaCreditoRadio.checked) {
+    creditCardForm.style.display = "block"; // Muestra el formulario de tarjeta de crédito
+  }
+});
+
+// Event listener para ocultar el formulario cuando se selecciona "Transferencia Bancaria"
+transferenciaBancariaRadio.addEventListener("change", function () {
+  if (transferenciaBancariaRadio.checked) {
+    creditCardForm.style.display = "none"; // Oculta el formulario de tarjeta de crédito
+  }
+});
+
+
+
+
 
 
 document.getElementById("finalizar-compra").addEventListener("click", function() {

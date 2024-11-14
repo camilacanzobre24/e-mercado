@@ -32,11 +32,12 @@
         </ul>
         <!-- Usuario Desplegable -->
         <div class="dropdown ms-auto">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre-usuario" 
-            data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre-usuario" data-bs-toggle="dropdown"
+            aria-expanded="false">
           </button>
           <ul class="dropdown-menu" aria-labelledby="nombre-usuario">
-            <li><a class="dropdown-item" href="cart.html">Mi carrito <span id="carrito-badge" class="badge bg-secondary">(0)</span></a></li>
+            <li><a class="dropdown-item" href="cart.html">Mi carrito <span id="carrito-badge"
+                  class="badge bg-secondary">(0)</span></a></li>
             <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
             <li><a class="dropdown-item" href="#" id="cerrar-sesion">Cerrar sesión</a></li>
           </ul>
@@ -45,196 +46,231 @@
     </div>
   </nav>
   <main>
-      <div class="container">
-        <div class="banner">
-          <h1>Carrito de compras</h1>
-        </div>
-        
-        <!-- Línea superior -->
-        <div class="header-line"></div>
-    
-        <!-- Encabezados solo para pantallas grandes -->
-        <div class="row text-center d-none d-lg-flex encabezado-gris">
-          <div class="col-3">Imagen</div>
-          <div class="col-2">Nombre</div>
-          <div class="col-1">Moneda</div>
-          <div class="col-2">Precio</div>
-          <div class="col-1">Cantidad</div>
-          <div class="col-2">Subtotal</div>
-          <div class="col-1">Eliminar</div>
-        </div>
-    
-        <!-- Línea inferior -->
-        <div class="footer-line d-none d-lg-block"></div>
-    
-        <!-- Fila de productos -->
-        <div class="row product-item justify-content-center align-items-center">
-          <p id="mensaje-carrito-vacio" style="display: none;">El carrito está vacío.</p>
-    
-          <!-- Contenedor para los productos en el carrito -->
-          <div id="carritoContainer" class="mt-3">
-              <!-- Los productos se insertarán aquí dinámicamente -->
-          </div>
-        </div>
-    
-        <!-- Totales alineados a la derecha -->
-          <!-- Línea superior -->
-        <div class="header-line"></div>
-    
-        <div class="text-end mt-3 pe-5">
-          <p>Total en Pesos: <span id="total-pesos">0.00</span> UYU</p>
-          <p>Total en Dólares: <span id="total-dolares">0.00</span> USD</p>
-        </div>
-        
-          <!-- Botón para abrir el primer modal -->
-        <div class="text-end">
-          <button class="btn btn-primary"  data-bs-target="#exampleModalToggle" id="inicio-de-compra">Iniciar Proceso de Compra</button>
-        </div>
+    <div class="container">
+      <div class="banner">
+        <h1>Carrito de compras</h1>
+      </div>
 
+      <!-- Línea superior -->
+      <div class="header-line"></div>
 
-        <!-- Línea inferior -->
-        <div class="footer-line d-none d-lg-block"></div>
-        
-       <!--MODAL-->
-        <!-- Modal Paso 1 -->
-  <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-labelledby="exampleModalToggleLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-     <!-- Alerta de validación -->
-  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-tipo-de-envio">
-    <p>No se permite dejar campos vacios</p>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-    <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel">TIPO DE ENVÍO</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Contenido del Paso 1 -->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="premium">
-            <label class="form-check-label" for="flexRadioDefault1">Premium 2 a 5 días (15%)</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="express">
-            <label class="form-check-label" for="flexRadioDefault2">Express 5 a 8 días (7%)</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="standard">
-            <label class="form-check-label" for="flexRadioDefault3">Standard 12 a 15 días (5%)</label>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"  id="siguiente1">Siguiente</button>
+      <!-- Encabezados solo para pantallas grandes -->
+      <div class="row text-center d-none d-lg-flex encabezado-gris">
+        <div class="col-3">Imagen</div>
+        <div class="col-2">Nombre</div>
+        <div class="col-1">Moneda</div>
+        <div class="col-2">Precio</div>
+        <div class="col-1">Cantidad</div>
+        <div class="col-2">Subtotal</div>
+        <div class="col-1">Eliminar</div>
+      </div>
+
+      <!-- Línea inferior -->
+      <div class="footer-line d-none d-lg-block"></div>
+
+      <!-- Fila de productos -->
+      <div class="row product-item justify-content-center align-items-center">
+        <p id="mensaje-carrito-vacio" style="display: none;">El carrito está vacío.</p>
+
+        <!-- Contenedor para los productos en el carrito -->
+        <div id="carritoContainer" class="mt-3">
+          <!-- Los productos se insertarán aquí dinámicamente -->
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Modal Paso 2 -->
-  <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-               <!-- Alerta de validación -->
-  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-direccion-de-envio">
-    <p>No se permite dejar campos vacios</p>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-          <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel2">DIRECCIÓN DE ENVÍO</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Contenido del Paso 2 -->
-          <div class="mb-3"><label class="form-label">Departamento</label><input class="form-control" id="departamento"></div>
-          <div class="mb-3"><label class="form-label">Localidad</label><input class="form-control" id="localidad"></div>
-          <div class="mb-3"><label class="form-label">Calle</label><input class="form-control" id="calle"></div>
-          <div class="mb-3"><label class="form-label">Número</label><input class="form-control" id="número"></div>
-          <div class="mb-3"><label class="form-label">Esquina</label><input class="form-control" id="esquina"></div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" id="siguiente2">Siguiente</button>
-        </div>
+      <!-- Totales alineados a la derecha -->
+      <!-- Línea superior -->
+      <div class="header-line"></div>
+
+      <div class="text-end mt-3 pe-5">
+        <p>Total en Pesos: <span id="total-pesos">0.00</span> UYU</p>
+        <p>Total en Dólares: <span id="total-dolares">0.00</span> USD</p>
       </div>
-    </div>
-  </div>
 
-  <!-- Modal Paso 3 -->
-  <div class="modal fade" id="exampleModalToggle3" tabindex="-1" aria-labelledby="exampleModalToggleLabel3" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
+      <!-- Botón para abrir el primer modal -->
+      <div class="text-end">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" id="inicio-de-compra">Iniciar Proceso de
+          Compra</button>
+      </div>
+
+
+      <!-- Línea inferior -->
+      <div class="footer-line d-none d-lg-block"></div>
+
+      <!--MODAL-->
+      <!-- Modal Paso 1 -->
+      <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-labelledby="exampleModalToggleLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
           <!-- Alerta de validación -->
-  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-forma-de-pago">
-    <p>No se permite dejar campos vacios</p>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-          <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel3">FORMA DE PAGO</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Contenido del Paso 3 -->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">Tarjeta de Crédito</label>
+          <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-tipo-de-envio">
+            <p>No se permite dejar campos vacios</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault2">Transferencia Bancaria</label>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel">TIPO DE ENVÍO</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Contenido del Paso 1 -->
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                  value="premium">
+                <label class="form-check-label" for="flexRadioDefault1">Premium 2 a 5 días (15%)</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                  value="express">
+                <label class="form-check-label" for="flexRadioDefault2">Express 5 a 8 días (7%)</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+                  value="standard">
+                <label class="form-check-label" for="flexRadioDefault3">Standard 12 a 15 días (5%)</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" id="siguiente1" type="button" >Siguiente</button>
+            </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" id="siguiente3">Siguiente</button>
+      </div>
+
+      <!-- Modal Paso 2 -->
+      <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalToggleLabel2"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- Alerta de validación -->
+              <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-direccion-de-envio">
+                <p>No se permite dejar campos vacios</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel2">DIRECCIÓN DE ENVÍO</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Contenido del Paso 2 -->
+              <div class="mb-3"><label class="form-label">Departamento</label><input class="form-control"
+                  id="departamento"></div>
+              <div class="mb-3"><label class="form-label">Localidad</label><input class="form-control" id="localidad">
+              </div>
+              <div class="mb-3"><label class="form-label">Calle</label><input class="form-control" id="calle"></div>
+              <div class="mb-3"><label class="form-label">Número</label><input class="form-control" id="número"></div>
+              <div class="mb-3"><label class="form-label">Esquina</label><input class="form-control" id="esquina"></div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" id="siguiente2" type="button">Siguiente</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
+      <!-- Modal Paso 3 -->
+      <div class="modal fade" id="exampleModalToggle3" tabindex="-1" aria-labelledby="exampleModalToggleLabel3"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- Alerta de validación -->
+              <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-forma-de-pago">
+                <p>No se permite dejar campos vacios</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel3">FORMA DE PAGO</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Contenido del Paso 3 -->
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault4">
+                <label class="form-check-label" for="flexRadioDefault1">Tarjeta de Crédito</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault5">
+                <label class="form-check-label" for="flexRadioDefault2">Transferencia Bancaria</label>
+              </div>
+             <!-- Formulario de tarjeta de crédito -->
+<div id="credit-card-form" style="display: none;">
+  <div class="mb-3">
+    <label class="form-label">Número de tarjeta</label>
+    <input type="text" class="form-control" id="card-number" maxlength="16">
   </div>
-
-<!-- Modal Paso 4 (Costos) -->
-<div class="modal fade" id="exampleModalToggle4" tabindex="-1" aria-labelledby="exampleModalToggleLabel4" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel4">COSTOS</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Contenido del Paso 4 -->   
-        <p>Subtotal en Pesos: <span id="subtotal-pesos2">0.00</span> UYU</p>
-        <p>Subtotal en Dólares: <span id="subtotal-dolares2">0.00</span> USD</p>
-        <p>Costo de envío en Pesos: <span id="costo-de-envio-pesos">0.00</span> UYU</p>
-        <p>Costo de envío en Dólares: <span id="costo-de-envio-dolares">0.00</span> USD</p>
-        <h4>Total en Pesos: <span id="total-pesos2">0.00</span></h4>
-        <h4>Total en Dólares: <span id="total-dolares2">0.00</span></h4>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-success" data-bs-dismiss="modal" id="finalizar-compra">Finalizar compra</button>
-
-      </div>
-    </div>
+  <div class="mb-3">
+    <label class="form-label">Nombre del titular</label>
+    <input type="text" class="form-control" id="card-holder">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Fecha de expiración</label>
+    <input type="month" class="form-control" id="card-expiration">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Código de seguridad (CVV)</label>
+    <input type="text" class="form-control" id="card-cvv" maxlength="3">
   </div>
 </div>
 
- <!-- Alerta de validación -->
- <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-totales">
-  <p>No se permite dejar campos vacios</p>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
 
-<!-- Alerta de éxito -->
-<div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success-compra" style="display:none;">
-  <p>Compra realizada con éxito. ¡Gracias por tu compra!</p>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" id="siguiente3" type="button">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Paso 4 (Costos) -->
+      <div class="modal fade" id="exampleModalToggle4" tabindex="-1" aria-labelledby="exampleModalToggleLabel4"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel4">COSTOS</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Contenido del Paso 4 -->
+              <p>Subtotal en Pesos: <span id="subtotal-pesos2">0.00</span> UYU</p>
+              <p>Subtotal en Dólares: <span id="subtotal-dolares2">0.00</span> USD</p>
+              <p>Costo de envío en Pesos: <span id="costo-de-envio-pesos">0.00</span> UYU</p>
+              <p>Costo de envío en Dólares: <span id="costo-de-envio-dolares">0.00</span> USD</p>
+              <h4>Total en Pesos: <span id="total-pesos2">0.00</span></h4>
+              <h4>Total en Dólares: <span id="total-dolares2">0.00</span></h4>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-success" data-bs-dismiss="modal" id="finalizar-compra">Finalizar compra</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerta de validación -->
+      <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-totales">
+        <p>No se permite dejar campos vacios</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <!-- Alerta de éxito -->
+      <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success-compra"
+        style="display:none;">
+        <p>Compra realizada con éxito. ¡Gracias por tu compra!</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
 
 
   </main>
-  
+
   <footer class="text-muted">
     <div class="container text-center text-md-start">
       <div class="row">
         <div class="col-md-6">
-          <p>Este sitio forma parte de 
+          <p>Este sitio forma parte de
             <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
           </p>
         </div>
