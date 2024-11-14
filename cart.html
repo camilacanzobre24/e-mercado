@@ -88,7 +88,7 @@
         
           <!-- Botón para abrir el primer modal -->
         <div class="text-end">
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Iniciar Proceso de Compra</button>
+          <button class="btn btn-primary"  data-bs-target="#exampleModalToggle" id="inicio-de-compra">Iniciar Proceso de Compra</button>
         </div>
 
 
@@ -99,7 +99,12 @@
         <!-- Modal Paso 1 -->
   <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-labelledby="exampleModalToggleLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+     <!-- Alerta de validación -->
+  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-tipo-de-envio">
+    <p>No se permite dejar campos vacios</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel">TIPO DE ENVÍO</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -107,7 +112,7 @@
         <div class="modal-body">
           <!-- Contenido del Paso 1 -->
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" valu="premium">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="premium">
             <label class="form-check-label" for="flexRadioDefault1">Premium 2 a 5 días (15%)</label>
           </div>
           <div class="form-check">
@@ -120,7 +125,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Siguiente</button>
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"  id="siguiente1">Siguiente</button>
         </div>
       </div>
     </div>
@@ -131,6 +136,11 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
+               <!-- Alerta de validación -->
+  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-direccion-de-envio">
+    <p>No se permite dejar campos vacios</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
           <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel2">DIRECCIÓN DE ENVÍO</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -143,7 +153,7 @@
           <div class="mb-3"><label class="form-label">Esquina</label><input class="form-control" id="esquina"></div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">Siguiente</button>
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" id="siguiente2">Siguiente</button>
         </div>
       </div>
     </div>
@@ -154,22 +164,27 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
+          <!-- Alerta de validación -->
+  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-forma-de-pago">
+    <p>No se permite dejar campos vacios</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
           <h1 class="modal-title fs-5 banner" id="exampleModalToggleLabel3">FORMA DE PAGO</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- Contenido del Paso 3 -->
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">Tarjeta de Crédito</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
             <label class="form-check-label" for="flexRadioDefault2">Transferencia Bancaria</label>
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal">Siguiente</button>
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" id="siguiente3">Siguiente</button>
         </div>
       </div>
     </div>
@@ -193,15 +208,24 @@
         <h4>Total en Dólares: <span id="total-dolares2">0.00</span></h4>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-success" data-bs-dismiss="modal">Finalizar compra</button>
+        <button class="btn btn-success" data-bs-dismiss="modal" id="finalizar-compra">Finalizar compra</button>
+
       </div>
     </div>
   </div>
 </div>
 
+ <!-- Alerta de validación -->
+ <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger-totales">
+  <p>No se permite dejar campos vacios</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 
-
-
+<!-- Alerta de éxito -->
+<div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success-compra" style="display:none;">
+  <p>Compra realizada con éxito. ¡Gracias por tu compra!</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 
 
   </main>

@@ -242,6 +242,196 @@ function calcularCostoEnvio() {
   // Inicializar el costo de envío al cargar la página
   window.addEventListener('DOMContentLoaded', calcularCostoEnvio);
   
+// Llamar a calcularCostoEnvio cada vez que el modal se abre
+const envioModal = document.getElementById('exampleModalToggle'); 
+if (exampleModalToggle) {
+    exampleModalToggle.addEventListener('shown.bs.modal', calcularCostoEnvio);
+}
+
+
+
+// Función para mostrar la alerta de error
+function showAlertError(message) {
+    const alertDanger = document.getElementById("alert-danger-tipo-de-envio");
+    alertDanger.querySelector('p').innerText = message; // Cambia el mensaje de error
+    alertDanger.classList.add("show"); // Muestra la alerta
+    alertDanger.style.display = 'block'; // Asegura que la alerta sea visible
+}
+
+// Función para ocultar la alerta de error
+function hideAlertError() {
+    const alertDanger = document.getElementById("alert-danger-tipo-de-envio");
+    alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
+    alertDanger.style.display = 'none'; // Asegura que la alerta esté oculta
+}
+
+// Event listener para el botón de 'Siguiente' en el Paso 1
+document.getElementById('siguiente1').addEventListener('click', function (event) {
+    // Verifica si hay algún radio button seleccionado
+    const tipoDeEnvio = document.querySelector('input[name="flexRadioDefault"]:checked');
+    
+    if (!tipoDeEnvio) {
+        // Si no hay selección, muestra la alerta y evita avanzar
+        event.preventDefault(); // Evita que avance al siguiente paso
+        showAlertError("Debe seleccionar una opción");
+    } else {
+        // Si hay selección, oculta la alerta
+        hideAlertError();
+
+        // Cierra el modal actual (Paso 1)
+        const modal1 = bootstrap.Modal.getInstance(document.getElementById('exampleModalToggle'));
+        modal1.hide(); // Cierra el modal
+
+        // Muestra el siguiente modal (Paso 2)
+        const modal2 = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+        modal2.show(); // Muestra el siguiente modal
+    }
+});
+
+// Función para mostrar la alerta de error en el Paso 2
+function showAlertError2(message) {
+    const alertDanger = document.getElementById("alert-danger-direccion-de-envio");
+    alertDanger.querySelector('p').innerText = message; // Cambia el mensaje de error
+    alertDanger.classList.add("show"); // Muestra la alerta
+    alertDanger.style.display = 'block'; // Asegura que la alerta sea visible
+}
+
+// Función para ocultar la alerta de error en el Paso 2
+function hideAlertError2() {
+    const alertDanger = document.getElementById("alert-danger-direccion-de-envio");
+    alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
+    alertDanger.style.display = 'none'; // Asegura que la alerta esté oculta
+}
+
+
+// Event listener para el botón de 'Siguiente' en el Paso 2
+document.getElementById('siguiente2').addEventListener('click', function (event) {
+    let departamento = document.getElementById("departamento").value.trim();
+    let localidad = document.getElementById("localidad").value.trim();
+    let calle = document.getElementById("calle").value.trim();
+    let numero = document.getElementById("número").value.trim(); // Asegúrate de que el ID es "número"
+    let esquina = document.getElementById("esquina").value.trim(); // Asegúrate de que el ID es "esquina"
+    
+    if (!departamento || !localidad || !calle || !numero || !esquina) {
+        // Si no hay campos completos, muestra la alerta y evita avanzar
+        event.preventDefault(); // Evita que avance al siguiente paso
+        showAlertError2("No pueden haber campos vacíos");
+    } else {
+        // Si todos los campos están completos, oculta la alerta
+        hideAlertError2();
+
+        // Cierra el modal actual (Paso 2)
+        const modal2 = bootstrap.Modal.getInstance(document.getElementById('exampleModalToggle2'));
+        modal2.hide(); // Cierra el modal
+
+        // Muestra el siguiente modal (Paso 3)
+        const modal3 = new bootstrap.Modal(document.getElementById('exampleModalToggle3'));
+        modal3.show(); // Muestra el siguiente modal
+    }
+});
+
+
+// Función para mostrar la alerta de error
+function showAlertError3(message) {
+    const alertDanger = document.getElementById("alert-danger-totales");
+    alertDanger.querySelector('p').textContent = message; // Actualiza el mensaje de la alerta
+    alertDanger.classList.add("show"); // Muestra la alerta
+}
+
+// Función para ocultar la alerta de error
+function hideAlertError3() {
+    const alertDanger = document.getElementById("alert-danger-totales");
+    alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
+}
+
+// Lógica para el evento de clic en el botón de "Iniciar Proceso de Compra"
+document.getElementById('inicio-de-compra').addEventListener('click', function (event) {
+    recalcularTotales(); // Asumo que esta función recalcula los totales correctamente
+    const totalPesos = document.getElementById('total-pesos');
+    const totalDolares = document.getElementById('total-dolares');
+    const totalPesosValue = parseFloat(totalPesos.textContent);
+    const totalDolaresValue = parseFloat(totalDolares.textContent);
+
+    // Si ambos totales son 0, evitar abrir el modal, mostrar la alerta y detener la acción
+    if (totalPesosValue === 0 && totalDolaresValue === 0) {
+        event.preventDefault(); // Evita que avance al siguiente paso
+        event.stopPropagation(); // Previene la propagación del evento de clic
+        showAlertError3("Debe haber al menos un producto agregado al carrito");
+
+        // Asegúrate de que el modal esté cerrado si se hizo clic con totales cero
+        const modalElement = document.getElementById('exampleModalToggle'); // Cambio aquí: usamos el ID correcto
+        if (modalElement) {
+            var myModal = bootstrap.Modal.getInstance(modalElement);
+            if (myModal) {
+                myModal.hide(); // Cierra el modal si está abierto
+            }
+        }
+    } else {
+        hideAlertError3(); // Oculta la alerta si los totales son válidos
+        const modalElement = document.getElementById('exampleModalToggle'); // Cambio aquí también
+
+        // Verifica si el modal existe y está listo para abrir
+        if (modalElement) {
+            var myModal = new bootstrap.Modal(modalElement);
+            myModal.show(); // Esto abrirá el modal
+        }
+    }
+});
+
+// Función para mostrar la alerta de error
+function showAlertError4(message) {
+    const alertDanger = document.getElementById("alert-danger-forma-de-pago");
+    alertDanger.querySelector('p').innerText = message; // Cambia el mensaje de error
+    alertDanger.classList.add("show"); // Muestra la alerta
+    alertDanger.style.display = 'block'; // Asegura que la alerta sea visible
+}
+
+// Función para ocultar la alerta de error
+function hideAlertError4() {
+    const alertDanger = document.getElementById("alert-danger-forma-de-pago");
+    alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
+    alertDanger.style.display = 'none'; // Asegura que la alerta esté oculta
+}
+
+// Event listener para el botón de 'Siguiente' en el Paso 1
+document.getElementById('siguiente3').addEventListener('click', function (event) {
+    // Verifica si hay algún radio button seleccionado
+    const formaDePago = document.querySelector('input[name="flexRadioDefault2"]:checked');
+    
+    if (!formaDePago) {
+        // Si no hay selección, muestra la alerta y evita avanzar
+        event.preventDefault(); // Evita que avance al siguiente paso
+        showAlertError4("Debe seleccionar una opción");
+    } else {
+        // Si hay selección, oculta la alerta
+        hideAlertError4();
+
+        // Cierra el modal actual (Paso 1)
+        const modal3 = bootstrap.Modal.getInstance(document.getElementById('exampleModalToggle3'));
+        modal3.hide(); // Cierra el modal
+
+        // Muestra el siguiente modal (Paso 2)
+        const modal4 = new bootstrap.Modal(document.getElementById('exampleModalToggle4'));
+        modal4.show(); // Muestra el siguiente modal
+    }
+});
+
+
+document.getElementById("finalizar-compra").addEventListener("click", function() {
+    console.log("Finalizar compra clicked!");
+
+    // Obtén la alerta de éxito
+    var alertSuccess = document.getElementById("alert-success-compra");
+    
+    // Asegúrate de que el display sea 'block' y elimina la clase 'fade' si es necesario
+    alertSuccess.style.display = "block";
+    alertSuccess.classList.remove("fade");
+
+    // Ocultar la alerta después de 5 segundos
+    setTimeout(function() {
+        alertSuccess.style.display = "none";  // Ocultar la alerta
+    }, 5000);
+});
 
 
 
