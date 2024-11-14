@@ -438,7 +438,7 @@ document.getElementById('siguiente3').addEventListener('click', function (event)
             return; // Sale de la función para no continuar con la validación
         }
     }
-
+    
     // Si todo está correcto, oculta la alerta y avanza
     hideAlertError4();
 
@@ -455,6 +455,7 @@ document.getElementById('siguiente3').addEventListener('click', function (event)
 const tarjetaCreditoRadio = document.getElementById("flexRadioDefault4");
 const transferenciaBancariaRadio = document.getElementById("flexRadioDefault5");
 const creditCardForm = document.getElementById("credit-card-form");
+const informacionBancaria = document.getElementById("informacion-bancaria");
 
 // Inicialmente, ocultamos el formulario de tarjeta de crédito si no está seleccionado "Tarjeta de Crédito"
 creditCardForm.style.display = "none"; // Aseguramos que el formulario esté oculto al cargar la página
@@ -465,11 +466,18 @@ if (tarjetaCreditoRadio.checked) {
 } else {
     creditCardForm.style.display = "none"; // Aseguramos que el formulario esté oculto si no está seleccionado
 }
+// Mostramos o no la informacion bancaria
+if (transferenciaBancariaRadio.checked) {
+    informacionBancaria.style.display = "block"; // Muestra el formulario de tarjeta si "Tarjeta de Crédito" está seleccionado
+} else {
+    informacionBancaria.style.display = "none"; // Aseguramos que el formulario esté oculto si no está seleccionado
+}
 
 // Event listener para mostrar el formulario cuando se selecciona "Tarjeta de Crédito"
 tarjetaCreditoRadio.addEventListener("change", function () {
   if (tarjetaCreditoRadio.checked) {
     creditCardForm.style.display = "block"; // Muestra el formulario de tarjeta de crédito
+    informacionBancaria.style.display = "none";
   }
 });
 
@@ -477,6 +485,7 @@ tarjetaCreditoRadio.addEventListener("change", function () {
 transferenciaBancariaRadio.addEventListener("change", function () {
   if (transferenciaBancariaRadio.checked) {
     creditCardForm.style.display = "none"; // Oculta el formulario de tarjeta de crédito
+    informacionBancaria.style.display = "block";
   }
 });
 
