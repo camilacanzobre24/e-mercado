@@ -1,7 +1,7 @@
 // Cargar el archivo JSON desde la URL
 let catID = localStorage.getItem("catID"); // Obtener el valor de catID del localStorage
 
-fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`) 
+fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
     .then(response => response.json())
     .then(data => {
         const contenido = document.getElementById('contenido');
@@ -34,7 +34,7 @@ fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
             // Filtrar los productos según el precio ingresado
             productosFiltrados = productos.filter(product => {
                 return (!minPrice || product.cost >= minPrice) &&
-                       (!maxPrice || product.cost <= maxPrice);
+                    (!maxPrice || product.cost <= maxPrice);
             });
 
             ordenar(); // Aplicar el orden después del filtro
@@ -64,7 +64,7 @@ fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
             // Filtrar los productos según el texto ingresado
             productosFiltrados = productosFiltrados.filter(product => {
                 return product.name.toLowerCase().includes(searchText) ||
-                product.description.toLowerCase().includes(searchText);
+                    product.description.toLowerCase().includes(searchText);
             });
             ordenar(); // Aplicar el orden después de la búsqueda
         }
@@ -72,12 +72,12 @@ fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
 
 
         // Event listener para el botón de filtrar
-        document.getElementById('filterBtn').addEventListener('click', function() {
-          filtrarPorPrecio(); // Aplica el filtro y luego el orden
+        document.getElementById('filterBtn').addEventListener('click', function () {
+            filtrarPorPrecio(); // Aplica el filtro y luego el orden
         });
 
         // Event listener para el botón de limpiar
-        document.getElementById('limpiarBtn').addEventListener('click', function() {
+        document.getElementById('limpiarBtn').addEventListener('click', function () {
             document.getElementById('minPrice').value = '';
             document.getElementById('maxPrice').value = '';
             productosFiltrados = [...productos]; // Restablecer a todos los productos
@@ -85,66 +85,66 @@ fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
         });
 
         // Event listener para el cambio en el ordenamiento
-        document.getElementById('sortOptions').addEventListener('change', function() {
+        document.getElementById('sortOptions').addEventListener('change', function () {
             ordenar(); // Aplica el orden con los productos filtrados
         });
-        
+
         // DESAFIATE Event listener para el campo de búsqueda
-        document.getElementById('productSearch').addEventListener('input', function() {
+        document.getElementById('productSearch').addEventListener('input', function () {
             buscar(); // Aplica la búsqueda en tiempo real;
         });
 
 
         //El título cambia según la categoría
-        const catName = data.catName;  
+        const catName = data.catName;
         const categoriaTitulo = document.getElementById('categoriaTitulo');
         categoriaTitulo.textContent = `¡Bienvenido a la sección de ${catName}!`;
     })
     .catch(error => console.error('Error al cargar el archivo JSON:', error));
 
-    let usuario = localStorage.getItem('usuario');
-    if (usuario) {
-        document.getElementById('nombre-usuario').textContent = `${usuario}`;
+let usuario = localStorage.getItem('usuario');
+if (usuario) {
+    document.getElementById('nombre-usuario').textContent = `${usuario}`;
+} else {
+    window.location.href = 'login.html';
+}
+
+document.getElementById('cerrar-sesion').addEventListener('click', function () {
+    // Borra todos los datos relevantes del localStorage
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('segundoNombre');
+    localStorage.removeItem('apellido');
+    localStorage.removeItem('segundoApellido');
+    localStorage.removeItem('telefono');
+    localStorage.removeItem('profileImage');
+
+    // Redirige a la pantalla de inicio de sesión
+    window.location.href = 'login.html';
+});
+
+// Función para seleccionar un producto, guardar su id en el localStorage y redirigir
+function seleccionarProducto(productId) {
+    localStorage.setItem('productID', productId);
+    window.location.href = 'product-info.html'; // Redirige a la página product-info.html
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Verificar si el tema está guardado en localStorage
+    const temaGuardado = localStorage.getItem("tema");
+
+    // Aplicar el tema al cargar la página
+    if (temaGuardado === "oscuro") {
+        document.querySelector("body").setAttribute("data-bs-theme", "dark");
     } else {
-        window.location.href = 'login.html';
-    }
-    
-    document.getElementById('cerrar-sesion').addEventListener('click', function() {
-        // Borra todos los datos relevantes del localStorage
-        localStorage.removeItem('usuario');
-        localStorage.removeItem('isAuthenticated');
-        localStorage.removeItem('nombre');
-        localStorage.removeItem('segundoNombre');
-        localStorage.removeItem('apellido');
-        localStorage.removeItem('segundoApellido');
-        localStorage.removeItem('telefono');
-        localStorage.removeItem('profileImage');
-    
-        // Redirige a la pantalla de inicio de sesión
-        window.location.href = 'login.html';
-    });
-
-    // Función para seleccionar un producto, guardar su id en el localStorage y redirigir
-    function seleccionarProducto(productId) {
-        localStorage.setItem('productID', productId);
-        window.location.href = 'product-info.html'; // Redirige a la página product-info.html
+        document.querySelector("body").setAttribute("data-bs-theme", "light");
     }
 
+    console.log("Tema aplicado:", document.querySelector("body").getAttribute("data-bs-theme"));
+});
 
-    document.addEventListener("DOMContentLoaded", () => {
-        // Verificar si el tema está guardado en localStorage
-        const temaGuardado = localStorage.getItem("tema");
-    
-        // Aplicar el tema al cargar la página
-        if (temaGuardado === "oscuro") {
-            document.querySelector("body").setAttribute("data-bs-theme", "dark");
-        } else {
-            document.querySelector("body").setAttribute("data-bs-theme", "light");
-        }
-    
-        console.log("Tema aplicado:", document.querySelector("body").getAttribute("data-bs-theme"));
-    });
-    
 // Función para actualizar el badge del carrito
 function actualizarBadgeCarrito() {
     const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
@@ -152,7 +152,7 @@ function actualizarBadgeCarrito() {
 
     // Suma las cantidades de los productos
     productosEnCarrito.forEach(productID => {
-        const cantidadGuardada = localStorage.getItem(`cantidad-${productID}`) || 1; 
+        const cantidadGuardada = localStorage.getItem(`cantidad-${productID}`) || 1;
         totalCantidad += parseInt(cantidadGuardada) || 0;
     });
 

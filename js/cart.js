@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         document.getElementById('mensaje-carrito-vacio').style.display = 'block';
-        actualizarTotales(0, 0); // Establece totales en cero si el carrito está vacío
+        actualizarTotales(0, 0); 
     }
 
     document.addEventListener('input', (event) => {
@@ -139,7 +139,7 @@ function recalcularTotales() {
                 });
         });
     } else {
-        actualizarTotales(0, 0); // Establece totales en cero si el carrito está vacío
+        actualizarTotales(0, 0); 
     }
 }
 
@@ -172,7 +172,6 @@ function eliminarProducto(productID) {
     recalcularTotales();
 }
 
-//---------------------------------------------------------//
 document.addEventListener('DOMContentLoaded', () => {
     // Encuentra todos los botones que cambian entre modales
     const nextButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
@@ -197,11 +196,11 @@ function calcularCostoEnvio() {
     recalcularTotales();
     const costoEnvioP = document.getElementById('costo-de-envio-pesos');
     const costoEnvioD = document.getElementById('costo-de-envio-dolares');
-    const subtotalElementPesos = document.getElementById('subtotal-pesos2'); // El subtotal en pesos
-    const subtotalPesos = parseFloat(subtotalElementPesos.textContent) || 0; // Obtener el subtotal (en pesos)
-    const subtotalElementDolares = document.getElementById('subtotal-dolares2'); // El subtotal en pesos
-    const subtotalDolares = parseFloat(subtotalElementDolares.textContent) || 0; // Obtener el subtotal (en dolares)
-    const tipoEnvio = document.querySelector('input[name="flexRadioDefault"]:checked'); // Opción de envío seleccionada
+    const subtotalElementPesos = document.getElementById('subtotal-pesos2'); 
+    const subtotalPesos = parseFloat(subtotalElementPesos.textContent) || 0; 
+    const subtotalElementDolares = document.getElementById('subtotal-dolares2'); 
+    const subtotalDolares = parseFloat(subtotalElementDolares.textContent) || 0; 
+    const tipoEnvio = document.querySelector('input[name="flexRadioDefault"]:checked'); 
     const totalPesos = document.getElementById('total-pesos2');
     const totalDolares = document.getElementById('total-dolares2');
     let porcentaje = 0;
@@ -250,7 +249,7 @@ if (exampleModalToggle) {
 
 
 
-// Función para mostrar la alerta de error
+// Función para mostrar la alerta de error en el Paso 1
 function showAlertError(message) {
     const alertDanger = document.getElementById("alert-danger-tipo-de-envio");
     alertDanger.querySelector('p').innerText = message; // Cambia el mensaje de error
@@ -258,7 +257,7 @@ function showAlertError(message) {
     alertDanger.style.display = 'block'; // Asegura que la alerta sea visible
 }
 
-// Función para ocultar la alerta de error
+// Función para ocultar la alerta de error en el Paso 1
 function hideAlertError() {
     const alertDanger = document.getElementById("alert-danger-tipo-de-envio");
     alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
@@ -335,7 +334,7 @@ document.getElementById('siguiente2').addEventListener('click', function (event)
 
 
 
-// Función para mostrar la alerta de error
+// Función para mostrar la alerta de error en el inicio de compra
 function showAlertError3(message) {
     const alertDanger = document.getElementById("alert-danger-totales");
     if (alertDanger) { // Verificamos si alertDanger existe
@@ -350,7 +349,7 @@ function showAlertError3(message) {
     }
 }
 
-// Función para ocultar la alerta de error
+// Función para ocultar la alerta de error en el inicio de compra
 function hideAlertError3() {
     const alertDanger = document.getElementById("alert-danger-totales");
     if (alertDanger) { // Verificamos si alertDanger existe
@@ -396,7 +395,7 @@ document.getElementById('inicio-de-compra').addEventListener('click', function (
 });
 
 
-// Función para mostrar la alerta de error
+// Función para mostrar la alerta de error en el Paso 3
 function showAlertError4(message) {
     const alertDanger = document.getElementById("alert-danger-forma-de-pago");
     alertDanger.querySelector('p').innerText = message; // Cambia el mensaje de error
@@ -404,14 +403,14 @@ function showAlertError4(message) {
     alertDanger.style.display = 'block'; // Asegura que la alerta sea visible
 }
 
-// Función para ocultar la alerta de error
+// Función para ocultar la alerta de error en el Paso 3
 function hideAlertError4() {
     const alertDanger = document.getElementById("alert-danger-forma-de-pago");
     alertDanger.classList.remove("show"); // Elimina la clase 'show' para ocultar la alerta
     alertDanger.style.display = 'none'; // Asegura que la alerta esté oculta
 }
 
-// Event listener para el botón de 'Siguiente' en el Paso 1
+// Event listener para el botón de 'Siguiente' en el Paso 3
 document.getElementById('siguiente3').addEventListener('click', function (event) {
     // Verifica si hay algún radio button seleccionado
     const formaDePago = document.querySelector('input[name="flexRadioDefault2"]:checked');
@@ -457,10 +456,11 @@ const transferenciaBancariaRadio = document.getElementById("flexRadioDefault5");
 const creditCardForm = document.getElementById("credit-card-form");
 const informacionBancaria = document.getElementById("informacion-bancaria");
 
-// Inicialmente, ocultamos el formulario de tarjeta de crédito si no está seleccionado "Tarjeta de Crédito"
-creditCardForm.style.display = "none"; // Aseguramos que el formulario esté oculto al cargar la página
+// Inicialmente, ocultamos el formulario de tarjeta de crédito y la información bancaria
+creditCardForm.style.display = "none"; 
+informacionBancaria.style.display = "none";
 
-// Verificamos si ya hay alguna opción seleccionada y mostramos u ocultamos el formulario en consecuencia
+//Mostramos o no el formulario de Tarjeta de crédito
 if (tarjetaCreditoRadio.checked) {
     creditCardForm.style.display = "block"; // Muestra el formulario de tarjeta si "Tarjeta de Crédito" está seleccionado
 } else {
@@ -489,18 +489,10 @@ transferenciaBancariaRadio.addEventListener("change", function () {
   }
 });
 
-
-
-
-
-
 document.getElementById("finalizar-compra").addEventListener("click", function() {
-    console.log("Finalizar compra clicked!");
 
     // Obtén la alerta de éxito
     var alertSuccess = document.getElementById("alert-success-compra");
-    
-    // Asegúrate de que el display sea 'block' y elimina la clase 'fade' si es necesario
     alertSuccess.style.display = "block";
     alertSuccess.classList.remove("fade");
 
@@ -508,17 +500,35 @@ document.getElementById("finalizar-compra").addEventListener("click", function()
     setTimeout(function() {
         alertSuccess.style.display = "none";  // Ocultar la alerta
     }, 5000);
+
+    vaciarCarrito();
 });
 
 
+// Función para vaciar el carrito
+function vaciarCarrito() {
+    // Elimina los productos almacenados en el carrito
+    localStorage.removeItem('productosEnCarrito');
 
+    // Elimina las cantidades de los productos
+    const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    productosEnCarrito.forEach(productID => {
+        localStorage.removeItem(`cantidad-${productID}`);
+    });
 
+    // Actualiza el badge del carrito
+    actualizarBadgeCarrito();
 
+    // Actualiza el contenido del carrito en la página
+    const carritoContainer = document.getElementById('carritoContainer');
+    carritoContainer.innerHTML = '';  // Vacía el contenedor del carrito
 
+    // Muestra el mensaje de carrito vacío
+    document.getElementById('mensaje-carrito-vacio').style.display = 'block';
 
-
-
-
+    // Actualiza los totales a 0
+    actualizarTotales(0, 0);
+}
 
 
 // Función para aplicar el tema guardado

@@ -76,3 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarBadgeCarrito(); // Actualiza el badge al cargar la página
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    // Verificar si el tema está guardado en localStorage
+    const temaGuardado = localStorage.getItem("tema");
+
+    // Aplicar el tema al cargar la página
+    if (temaGuardado === "oscuro") {
+        document.querySelector("body").setAttribute("data-bs-theme", "dark");
+    } else {
+        document.querySelector("body").setAttribute("data-bs-theme", "light");
+    }
+});
+
