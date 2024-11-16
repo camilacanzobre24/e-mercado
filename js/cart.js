@@ -362,7 +362,7 @@ function hideAlertError3() {
 
 // Lógica para el evento de clic en el botón de "Iniciar Proceso de Compra"
 document.getElementById('inicio-de-compra').addEventListener('click', function (event) {
-    recalcularTotales(); // Asumo que esta función recalcula los totales correctamente
+    recalcularTotales(); 
     const totalPesos = document.getElementById('total-pesos');
     const totalDolares = document.getElementById('total-dolares');
     const totalPesosValue = parseFloat(totalPesos.textContent);
@@ -373,9 +373,7 @@ document.getElementById('inicio-de-compra').addEventListener('click', function (
         event.preventDefault(); // Evita que el modal avance
         event.stopPropagation(); // Previene la propagación del evento de clic
         showAlertError3("Debe haber al menos un producto agregado al carrito");
-
-        // Asegúrate de que el modal esté cerrado si se hizo clic con totales cero
-        const modalElement = document.getElementById('exampleModalToggle'); // Usamos el ID correcto
+        const modalElement = document.getElementById('exampleModalToggle'); 
         if (modalElement) {
             var myModal = bootstrap.Modal.getInstance(modalElement);
             if (myModal) {
@@ -384,7 +382,7 @@ document.getElementById('inicio-de-compra').addEventListener('click', function (
         }
     } else {
         hideAlertError3(); // Oculta la alerta si los totales son válidos
-        const modalElement = document.getElementById('exampleModalToggle'); // Usamos el ID correcto
+        const modalElement = document.getElementById('exampleModalToggle'); // 
 
         // Verifica si el modal existe y está listo para abrir
         if (modalElement) {
@@ -476,7 +474,7 @@ if (transferenciaBancariaRadio.checked) {
 // Event listener para mostrar el formulario cuando se selecciona "Tarjeta de Crédito"
 tarjetaCreditoRadio.addEventListener("change", function () {
   if (tarjetaCreditoRadio.checked) {
-    creditCardForm.style.display = "block"; // Muestra el formulario de tarjeta de crédito
+    creditCardForm.style.display = "block"; 
     informacionBancaria.style.display = "none";
   }
 });
@@ -484,7 +482,7 @@ tarjetaCreditoRadio.addEventListener("change", function () {
 // Event listener para ocultar el formulario cuando se selecciona "Transferencia Bancaria"
 transferenciaBancariaRadio.addEventListener("change", function () {
   if (transferenciaBancariaRadio.checked) {
-    creditCardForm.style.display = "none"; // Oculta el formulario de tarjeta de crédito
+    creditCardForm.style.display = "none"; 
     informacionBancaria.style.display = "block";
   }
 });
@@ -509,24 +507,17 @@ document.getElementById("finalizar-compra").addEventListener("click", function()
 function vaciarCarrito() {
     // Elimina los productos almacenados en el carrito
     localStorage.removeItem('productosEnCarrito');
-
     // Elimina las cantidades de los productos
     const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
     productosEnCarrito.forEach(productID => {
         localStorage.removeItem(`cantidad-${productID}`);
     });
-
     // Actualiza el badge del carrito
     actualizarBadgeCarrito();
-
     // Actualiza el contenido del carrito en la página
     const carritoContainer = document.getElementById('carritoContainer');
     carritoContainer.innerHTML = '';  // Vacía el contenedor del carrito
-
-    // Muestra el mensaje de carrito vacío
     document.getElementById('mensaje-carrito-vacio').style.display = 'block';
-
-    // Actualiza los totales a 0
     actualizarTotales(0, 0);
 }
 
