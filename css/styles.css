@@ -305,10 +305,8 @@ a.custom-card:hover {
 
 .card-sold-count {
   font-size: 0.8em;
-  /* Tamaño de fuente más pequeño */
   color: #6c757d;
   margin-top: 0;
-  /* Quita el margen superior para que esté pegado al borde del footer */
 }
 
 .card img {
@@ -332,33 +330,20 @@ a.custom-card:hover {
 
 .banner {
   width: 100%;
-  /* Ancho completo de la página */
   background-color: #f0f0f0;
-  /* Fondo gris claro */
   padding: 20px 0;
-  /* Espacio vertical alrededor del texto */
   border-bottom: 2px solid #ddd;
-  /* Borde inferior sutil */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Sombra ligera para darle profundidad */
   text-align: center;
-  /* Centrar el texto dentro del banner */
   margin-bottom: 20px;
-  /* Espacio debajo del banner */
-
 }
 
 .banner h1 {
   font-size: 60px;
-  /* Tamaño grande para el título */
   font-family: 'Roboto', sans-serif;
-  /* Fuente moderna */
   font-weight: bold;
-  /* Negrita para mayor impacto */
   color: #333;
-  /* Color del texto */
   margin: 0;
-  /* Eliminar márgenes por defecto del h1 */
 }
 
 
@@ -371,19 +356,15 @@ a.custom-card:hover {
   margin: 0 auto;
 }
 
-/* Estilos para centrar el contenido menos la categoría y nombre del producto */
 .content-centered {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Centra horizontalmente el contenido */
   text-align: center;
-  /* Opcional: centra el texto dentro de los elementos */
 }
 
 .main-image {
   margin-bottom: 20px;
-  /* Espacio abajo de la imagen principal */
 }
 
 .thumbnails {
@@ -408,42 +389,30 @@ a.custom-card:hover {
 #thumbnails {
   display: flex;
   overflow-x: auto;
-  /* Permite desplazamiento horizontal si hay muchas miniaturas */
   white-space: nowrap;
-  /* Mantiene las miniaturas en una sola línea */
   padding: 10px 0;
-  /* Espacio arriba y abajo del carrusel */
 }
 
 .thumbnail {
   width: 150px;
-  /* Ajusta el tamaño de las miniaturas según tu diseño */
   height: auto;
-  /* Mantiene la relación de aspecto */
   margin-right: 10px;
-  /* Espacio entre las miniaturas */
   cursor: pointer;
-  /* Cambia el cursor para indicar que es interactivo */
 }
 
 .thumbnail:last-child {
   margin-right: 0;
-  /* Elimina el margen derecho de la última miniatura */
 }
 
-/* Estilos para centrar el contenido menos la categoría y nombre del producto */
 .content-centered {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Centra horizontalmente el contenido */
   text-align: center;
-  /* Opcional: centra el texto dentro de los elementos */
 }
 
 .main-image {
   margin-bottom: 20px;
-  /* Espacio abajo de la imagen principal */
 }
 
 .thumbnails {
@@ -468,42 +437,31 @@ a.custom-card:hover {
 #thumbnails {
   display: flex;
   overflow-x: auto;
-  /* Permite desplazamiento horizontal si hay muchas miniaturas */
   white-space: nowrap;
-  /* Mantiene las miniaturas en una sola línea */
   padding: 10px 0;
-  /* Espacio arriba y abajo del carrusel */
 }
 
 .thumbnail {
   width: 150px;
-  /* Ajusta el tamaño de las miniaturas según tu diseño */
   height: auto;
-  /* Mantiene la relación de aspecto */
   margin-right: 10px;
-  /* Espacio entre las miniaturas */
   cursor: pointer;
-  /* Cambia el cursor para indicar que es interactivo */
 }
 
 .thumbnail:last-child {
   margin-right: 0;
-  /* Elimina el margen derecho de la última miniatura */
 }
 
-/* Estilos para centrar el contenido menos la categoría y nombre del producto */
+
 .content-centered {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Centra horizontalmente el contenido */
   text-align: center;
-  /* Opcional: centra el texto dentro de los elementos */
 }
 
 .main-image {
   margin-bottom: 20px;
-  /* Espacio abajo de la imagen principal */
 }
 
 .thumbnails {
@@ -528,68 +486,50 @@ a.custom-card:hover {
 #thumbnails {
   display: flex;
   overflow-x: auto;
-  /* Permite desplazamiento horizontal si hay muchas miniaturas */
   white-space: nowrap;
-  /* Mantiene las miniaturas en una sola línea */
   padding: 10px 0;
-  /* Espacio arriba y abajo del carrusel */
 }
 
 .thumbnail {
   width: 150px;
-  /* Ajusta el tamaño de las miniaturas según tu diseño */
   height: auto;
-  /* Mantiene la relación de aspecto */
   margin-right: 10px;
-  /* Espacio entre las miniaturas */
   cursor: pointer;
-  /* Cambia el cursor para indicar que es interactivo */
 }
 
 .thumbnail:last-child {
   margin-right: 0;
-  /* Elimina el margen derecho de la última miniatura */
 }
 
 .gris {
   color: grey;
 }
 
-
-
-
 .fecha_calificaciones {
   color: #888;
   /* Tono gris */
   padding-left: 100px;
-  /* Separación entre usuario y fecha */
 }
 
 .fa-star {
   font-size: 17px;
   cursor: pointer;
   color: #ccc;
-  /* Color gris para estrellas no seleccionadas */
 }
 
 .fa-star.checked {
   color: #FFD700;
-  /* Color dorado para estrellas llenas */
 }
 
 .empty-star {
   color: transparent;
-  /* Color transparente para el interior de la estrella */
   border: none;
-  /* Elimina el borde */
   -webkit-text-stroke: 1px #888;
-  /* Trazo negro alrededor de la estrella */
   display: inline-block;
 }
 
 #enviarComentario {
   background-color: #808080;
-  /* Color gris */
   color: white;
   padding: 5px 10px;
   border: none;
@@ -604,30 +544,19 @@ a.custom-card:hover {
 
 #enviarComentario:hover {
   background-color: #a9a9a9;
-  /* Gris más claro al hacer hover */
 }
 
 #productos-relacionados {
   display: flex;
-  /* Utiliza flexbox para alinear los elementos en una fila */
   flex-wrap: wrap;
-  /* Permite que los elementos se envuelvan si no hay suficiente espacio */
   gap: 20px;
-  /* Espacio entre los productos */
   justify-content: center;
-  /* Centra los productos horizontalmente */
 }
 
-
-/*----------------------------------------------*/
-
-/* Estilos para pantallas pequeñas (móviles) */
 @media (max-width: 320px) {
   p {
     font-size: 12px;
-    /* Ajusta el tamaño de fuente para dispositivos móviles */
     white-space: normal;
-    /* Permite que el texto se ajuste automáticamente */
   }
 
   .products-container {
@@ -649,27 +578,20 @@ a.custom-card:hover {
 
   .container {
     flex-direction: row;
-    /* Fila para pantallas medianas o mayores */
     justify-content: space-between;
-    /* Espaciado entre los elementos */
     align-items: center;
-    /* Alineación vertical centrada */
   }
 
   footer p {
     white-space: nowrap;
-    /* Evita el quiebre de líneas en pantallas medianas o mayores */
   }
 
 }
 
-/* Estilos para pantallas medianas (tablets) */
 @media (max-width: 768px) {
   p {
     font-size: 14px;
-    /* Ajusta el tamaño de fuente para tabletas */
     white-space: normal;
-    /* Permite que el texto se ajuste automáticamente */
   }
 
   .bd-placeholder-img-lg {
@@ -683,14 +605,11 @@ a.custom-card:hover {
 
   .banner {
     padding: 10px 0;
-    /* Reducir el espacio vertical alrededor del texto */
     margin-bottom: 10px;
-    /* Reducir el espacio debajo del banner */
   }
 
   .banner h1 {
     font-size: 36px;
-    /* Reducir el tamaño del texto en pantallas pequeñas */
   }
 
   .products-container {
@@ -707,7 +626,6 @@ a.custom-card:hover {
   .filter-controls>div {
     width: 100%;
     max-width: 600px;
-    /* Ajusta el ancho máximo según sea necesario */
   }
 
   .price-filter input,
@@ -716,7 +634,6 @@ a.custom-card:hover {
   .sort-controls input {
     width: auto;
     margin: 5px 0;
-    /* Ajusta el espacio entre los campos */
   }
 
   .price-filter {
@@ -728,9 +645,7 @@ a.custom-card:hover {
   .price-filter .filter-group {
     display: flex;
     flex-direction: column;
-    /* Coloca la etiqueta y el campo en una columna */
     flex: 0 1 calc(50% - 10px);
-    /* Cada grupo ocupa el 50% del contenedor */
   }
 
   .price-filter label {
@@ -739,7 +654,6 @@ a.custom-card:hover {
 
   .price-filter input {
     width: 100%;
-    /* Asegura que el input ocupe todo el ancho disponible dentro de su grupo */
   }
 
   .sort-controls {
@@ -753,26 +667,21 @@ a.custom-card:hover {
 
   .caja-comentarios {
     padding: 10px;
-    /* Espacio interno ajustado */
   }
 
   .row {
     display: flex;
     flex-direction: column;
-    /* Cambia la dirección de las columnas a vertical */
   }
 
   .col-md-3,
   .col-md-6 {
     width: 100%;
-    /* Asegura que cada columna ocupe todo el ancho disponible */
     margin-bottom: 20px;
-    /* Añade espacio entre las secciones */
   }
 
   textarea {
     width: 100%;
-    /* Asegura que el textarea sea ancho completo */
   }
 
 }
@@ -780,115 +689,84 @@ a.custom-card:hover {
 .profile-image {
   width: 100%;
   height: 150px;
-  /* Altura de la imagen de perfil */
   background-color: #D3D3D3;
-  /* Color de fondo de la imagen de perfil */
   margin-bottom: 20px;
 }
 
 .form-control-custom {
   max-width: 300px;
-  /* Ancho máximo de los campos de entrada */
   margin: 0 auto;
-  /* Centrado horizontal */
 }
 
 .bg-diamond {
   background: radial-gradient(circle at 50% 50%, #FFA930, #FFE9C5);
-  /* Degradé en diamante */
   padding: 15px;
-  /* Espacio alrededor del texto */
   border-radius: 5px;
-  /* Bordes redondeados */
   margin-bottom: 20px;
-  /* Espacio debajo del título */
   margin-top: 10px;
 }
 
 .title {
   font-size: 3rem;
-  /* Tamaño de la fuente del título */
   color: #333333;
-  /* Color del texto */
   font-weight: bold;
-  /* Negrita */
   text-align: center;
-  /* Centrar texto */
 
 }
 
 .label-custom {
   color: #ff9900;
-  /* Cambia este color según tus preferencias */
   font-weight: bold;
-  /* Negrita (opcional) */
   font-family: 'Anonymous Pro', monospace;
 
 }
 
 .form-control {
   border-radius: 5px;
-  /* Bordes redondeados para los inputs */
   width: 350px;
-  /* Ancho más amplio de los campos de entrada */
   height: 40px;
 
 }
 
-
-/* Aumentar el tamaño del switch */
 .custom-switch .form-check-input {
   width: 3rem;
   height: 1.5rem;
   border-radius: 1.5rem;
 }
 
-/* Ajustar el tamaño del indicador dentro del switch */
 .custom-switch .form-check-input:checked {
   background-color: #343a40;
-  /* Fondo oscuro cuando está activado */
 }
 
-/* Cambiar el color del switch cuando no está activado */
 .custom-switch .form-check-input {
   background-color: #f8f9fa;
-  /* Fondo claro */
 }
 
-/* Cambiar el color del indicador del switch */
 .custom-switch .form-check-input::before {
   height: 1.3rem;
   width: 1.3rem;
 }
 
-/* Cambiar el color del switch cuando el tema es claro */
 body[data-bs-theme="light"] .form-check-input {
   background-color: #ffffff;
   /* Switch blanco */
 }
 
-/* Cambiar el color del switch cuando el tema es oscuro */
 body[data-bs-theme="dark"] .form-check-input {
   background-color: #6c757d;
-  /* Switch más oscuro */
 }
 
-
-
-/* Estilos para el tema claro */
 body[data-bs-theme="light"] {
   background-color: white;
   color: black;
 }
 
-/* Estilos para el tema oscuro */
 body[data-bs-theme="dark"] {
   background-color: rgb(52, 58, 64);
   color: #9b9b9b;
 
   .banner {
     background-color: rgb(33, 33, 33);
-    /* Fondo negro del banner */
     padding: 0;
     margin: 0;
     border: none;
@@ -896,23 +774,17 @@ body[data-bs-theme="dark"] {
 
   .banner h1#categoriaTitulo {
     color: rgb(180, 180, 180);
-    /* Color de texto */
     background-color: rgb(33, 33, 33);
-    /* Fondo oscuro del título */
     text-align: center;
     margin: 0;
     padding: 20px 0;
-    /* Ajusta el padding vertical según necesites */
     width: 100%;
-    /* Asegura que el título ocupe todo el ancho del banner */
   }
-
 
   .filter-controls {
     background-color: rgb(90, 92, 94);
     color: rgb(255, 255, 255);
   }
-
 
   .filter-controls label,
   .filter-controls input[type="number"],
@@ -924,13 +796,11 @@ body[data-bs-theme="dark"] {
     border: 1px solid rgb(73, 80, 87);
   }
 
-
   #filterBtn,
   #limpiarBtn {
     background-color: rgb(73, 80, 87);
     color: rgb(255, 255, 255);
   }
-
 
   #minPrice,
   #maxPrice,
@@ -938,63 +808,49 @@ body[data-bs-theme="dark"] {
     border: 1px solid rgb(73, 80, 87);
   }
 
-  /* Cambiar colores para las tarjetas de productos en modo oscuro */
 .card {
-  background-color: rgb(33, 37, 41); /* Fondo oscuro */
-  color: rgb(255, 255, 255); /* Texto en blanco */
+  background-color: rgb(33, 37, 41); 
+  color: rgb(255, 255, 255); 
 }
 
 .card-title {
-  color: rgb(200, 200, 200); /* Color claro para el título */
+  color: rgb(200, 200, 200); 
 }
 
 .card-price {
-  color: rgb(180, 180, 180); /* Color distintivo para el precio */
+  color: rgb(180, 180, 180);
 }
 
 .card-text {
-  color: rgb(180, 180, 180); /* Color claro para el texto */
+  color: rgb(180, 180, 180); 
 }
 
 .card-footer {
-  background-color: rgb(45, 50, 56); /* Fondo oscuro para el pie de la tarjeta */
-  color: rgb(200, 200, 200); /* Color claro para el texto del pie */
+  background-color: rgb(45, 50, 56);
+  color: rgb(200, 200, 200);
 }
-
-
 }
-
-
-/* carrito de compras -------------------------------------------------*/
 
 #imagen-carrito {
   max-width: 100%;
   max-height: 150px;
-  /* Puedes ajustar la altura máxima según lo necesites */
 }
 
 
 @media (max-width: 768px) {
-
   .header-line,
   .footer-line {
     display: none;
-    /* Oculta las líneas superior e inferior */
   }
 
 }
 
-/* Estilo para celulares */
 @media (max-width: 320px) {
   .img-carrito {
     width: 100px;
-    /* Aumenta el ancho para que sea más visible */
     max-width: 100%;
-    /* Permite que se ajuste al contenedor */
     height: auto;
-    /* Mantiene la proporción */
     min-width: 80px;
-    /* Establece un tamaño mínimo para evitar que sea demasiado pequeña */
     object-fit: contain;
   }
 
@@ -1007,18 +863,13 @@ body[data-bs-theme="dark"] {
   }
 }
 
-/* Estilo para tablets */
 @media (max-width: 768px) {
 
   .img-carrito {
     width: 100px;
-    /* Aumenta el ancho para que sea más visible */
     max-width: 100%;
-    /* Permite que se ajuste al contenedor */
     height: auto;
-    /* Mantiene la proporción */
     min-width: 80px;
-    /* Establece un tamaño mínimo para evitar que sea demasiado pequeña */
     object-fit: contain;
   }
 
@@ -1031,9 +882,6 @@ body[data-bs-theme="dark"] {
   }
 }
 
-
-
-/* Estilos para las líneas horizontales */
 .header-line {
   border-bottom: 2px solid #ddd;
   margin-bottom: 10px;
@@ -1044,17 +892,11 @@ body[data-bs-theme="dark"] {
   margin-top: 10px;
 }
 
-
-
-/* Estilos para el contenedor principal */
 .container {
   max-width: 100%;
   padding: 0 15px;
 }
 
-
-
-/* Estilos para el footer */
 footer {
   font-size: 0.875rem;
   padding: 15px;
@@ -1064,18 +906,6 @@ footer .row div {
   text-align: center;
 }
 
-
 .encabezado-gris {
   color: #888888;
-  /* Un tono de gris claro */
 }
-
-/* carrito de compras -------------------------------------------------*/
-
-
-
-/*Pantalla de index ------------------------*/
-
-
-
-/*Pantalla de index ------------------------*/
