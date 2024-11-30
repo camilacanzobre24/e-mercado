@@ -534,3 +534,55 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarBadgeCarrito();
 });
 
+
+/* desafiate entrega 8*/
+
+// Función para obtener los productos del carrito desde localStorage
+function obtenerProductosDelCarrito() {
+    const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    let productos = [];
+
+    // Por cada producto guardado en el carrito, obtenemos su información
+    productosEnCarrito.forEach(productID => {
+        fetch(`https://japceibal.github.io/emercado-api/products/${productID}.json`)
+            .then(response => response.json())
+            .then(productData => {
+                const cantidadGuardada = parseInt(localStorage.getItem(`cantidad-${productID}`)) || 1;
+                const precioTotal = cantidadGuardada * productData.cost;
+
+                // Preparar los datos del producto para enviar al backend
+                const producto = {
+                    Producto: productData.name,           // Nombre del producto
+                    CantidadDeProductos: cantidadGuardada, // Cantidad de productos
+                    PrecioTotal: precioTotal              // Precio total de esa cantidad
+                };
+
+                // Enviar el producto al servidor
+                enviarProductoAlServidor(producto);
+            })
+            .catch(error => console.error('Error al cargar el producto:', error));
+    });
+}
+
+// Función para enviar los productos al servidor
+function enviarProductoAlServidor(producto) {
+    fetch('http://localhost:3000/carrito', {  
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(producto)  // Enviar los datos del producto como JSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Producto enviado al servidor:', data);
+    })
+    .catch(error => {
+        console.error('Error al enviar el producto:', error);
+    });
+}
+
+// Captura el evento de clic en el botón "Finalizar Compra"
+document.getElementById('inicio-de-compra').addEventListener('click', function() {
+    obtenerProductosDelCarrito();  // Llamamos a la función para enviar los productos al servidor
+});
